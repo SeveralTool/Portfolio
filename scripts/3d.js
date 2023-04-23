@@ -1,70 +1,55 @@
 import * as THREE from "./three-module.js";
 
-
 // TagCloud.js ESFERA
 //labels
-
-const Texts = [
-  "Html5",
-  "Css3",
-  "JavaScript",
-  "Git",
-  "Three.js",
-  "React.js",
-  "Python",
-  "Tkinter",
-  "TagCloud.js",
-  "Docker",
-  "Linux",
-  "PhpMyAdmin",
-  "Django",
-  "Fast-Api",
-  "MySQL",
-  "Jquery",
-  "Charts.js",
-  "Php",
-  "Ajax",
-  "Json",
-  "Flask",
-];
+const Texts = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
 var width = window.innerWidth;
 var options = {
   radius: width * 0.345,
   maxSpeed: "normal",
-  initSpeed: "normal",
-  direction: 105,
+  initSpeed: "slow",
+  direction: 605,
   fps: 60,
   keep: true,
   backgroungColor: "#FFFF",
   sort: "a-z",
 };
 
-  
 //settings
 var tagCloud = TagCloud("#canvas", Texts, options);
 document.getElementById("canvas").style.color = "rgb(27, 120, 226)";
 
-// window.addEventListener('resize', ()=>{
-//     var width = window.innerWidth
-//     // // tagCloud.destroy()
-//     var padre = document.getElementById('canvas')
-//     var del = document.getElementById('canvas').firstElementChild
-//     padre.removeChild(del)
-//     // console.log(padre, del)
-//     options.radius = width * 0.9
-//     // console.log(options.radius)
-//     var tagCloud = TagCloud('#canvas', Texts, options);
-// })
+//Crear elemento donde van las imgs
+var tags = [];
+tags = document.querySelectorAll(".tagcloud--item");
 
-// // Función para actualizar el radio de la esfera de la nube de etiquetas
-// function updateTagCloudRadius() {
-//     var width = window.innerWidth;
-//     var radio = width * 2;
-//     tagCloud.update({ radius: radio });
-// }
+//Crear el array con las rutas de las imgs
+const imagenes = [
+  "./Img`s/icons/charts.png",
+  "./Img`s/icons/css-3.png",
+  "./Img`s/icons/Django-Logo.png",
+  "./Img`s/icons/docker.png",
+  "./Img`s/icons/fast.png",
+  "./Img`s/icons/git.png",
+  "./Img`s/icons/html-5.png",
+  "./Img`s/icons/jquery.png",
+  "./Img`s/icons/js.png",
+  "./Img`s/icons/linux.png",
+  "./Img`s/icons/mongo.png",
+  "./Img`s/icons/mysql.png",
+  "./Img`s/icons/php.png",
+  "./Img`s/icons/physics.png",
+  "./Img`s/icons/piton.png",
+  "./Img`s/icons/Three.js.png",
+];
 
-// // Llamar a la función de actualización cuando la ventana cambie de tamaño
-// window.addEventListener('resize', updateTagCloudRadius);
+for (var i = 0; i < tags.length; i++) {
+  // tagArray.push(tags[i]);
+  const img = document.createElement("img");
+  img.src = imagenes[i];
+  img.classList.add("img-canvas");
+  tags[i].appendChild(img);
+}
 
 ////////////////////////////////////////////////////////
 
