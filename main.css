@@ -796,7 +796,6 @@ i {
   justify-content: center;
   column-gap: 5px;
   font-size: 1.2rem;
-  margin-right: 20px;
 }
 
 .social-footer i {
@@ -1067,8 +1066,11 @@ i {
     padding: 2px;
     height: max-content;
   }
+  .intro-txt p {
+    font-size: 1.3rem;
+  }
   .intro-pass p {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
   .social-box {
     top: 2vh;
@@ -1085,7 +1087,7 @@ i {
     row-gap: 5vw;
   }
   .box-notifi span {
-    font-size: 2rem;
+    font-size: 1.2rem;
   }
 
   .i {
@@ -1103,7 +1105,7 @@ i {
     font-size: 2rem;
   }
   .cv-download span {
-    font-size: 3rem;
+    font-size: 1.2rem;
   }
   .intro-txt p {
     font-size: 1.5rem;
@@ -1122,5 +1124,12 @@ i {
   }
   .link-code {
     font-size: 2rem;
+  }
+  .img-canvas{
+    width: 50px!important;
+    height: 50px!important;
+  }
+  .power-span{
+    font-size: 1rem;
   }
 }
