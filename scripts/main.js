@@ -5,7 +5,7 @@
   setTimeout(() => {
     //Quitar carga de web
     load.style.display = "none";
-  }, 1000);
+  }, 800);
 // };
 // elegir idioma
 let BtnES = document.getElementById("es");
