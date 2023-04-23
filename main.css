@@ -1066,12 +1066,7 @@ i {
     padding: 2px;
     height: max-content;
   }
-  .intro-txt p {
-    font-size: 1.3rem;
-  }
-  .intro-pass p {
-    font-size: 1.3rem;
-  }
+
   .social-box {
     top: 2vh;
     right: 3vw !important;
@@ -1089,7 +1084,6 @@ i {
   .box-notifi span {
     font-size: 1.2rem;
   }
-
   .i {
     font-size: 5vw !important;
     margin: auto;
@@ -1108,10 +1102,10 @@ i {
     font-size: 1.2rem;
   }
   .intro-txt p {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
   .skills-txt p {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
   #generate {
     font-size: 1.5rem;
@@ -1125,11 +1119,14 @@ i {
   .link-code {
     font-size: 2rem;
   }
-  .img-canvas{
-    width: 50px!important;
-    height: 50px!important;
+  .img-canvas {
+    width: 50px !important;
+    height: 50px !important;
   }
-  .power-span{
+  .power-span {
+    font-size: 1rem;
+  }
+  .link-code{
     font-size: 1rem;
   }
 }
