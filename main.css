@@ -10,8 +10,12 @@
 p,
 span,
 div {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif !important;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif!important;
   font-weight: 100;
+}
+
+p {
+  cursor: default;
 }
 
 h1,
@@ -166,6 +170,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .social-box {
@@ -214,7 +219,6 @@ body {
 #link1 {
   position: absolute;
   bottom: 3%;
-  margin-left: 50%;
   z-index: 100;
 }
 
@@ -416,13 +420,18 @@ h2 {
   height: max-content;
   margin-top: 2%;
   background-color: #f0e7e700;
-  font-size: 2rem;
+  font-size: 0.2rem;
 }
 
 .tagcloud--item {
   font-size: 1.3rem;
   font-weight: lighter;
   font-family: serif;
+}
+
+.img-canvas {
+  width: 100px !important;
+  height: 100px !important;
 }
 
 canvas {
@@ -490,13 +499,14 @@ canvas {
 
 h3 {
   width: max-content;
-  font-size: 1.2rem;
+  color: #fff;
+  font-size: 1.3rem;
   padding-top: 5px;
   font-weight: 200;
   margin: auto;
   margin-bottom: 5px;
-  border-bottom: 1px solid #fff;
-  cursor: pointer;
+  border-bottom: px solid #fff;
+  cursor: default;
 }
 
 .desc-es {
@@ -555,17 +565,18 @@ h3 {
 }
 
 .pic-proyect {
-  transition: all 0.3s;
   background-color: rgba(40, 41, 40, 0.575);
   padding: 15px;
   color: red;
+  width: max-content;
+  min-width: max-content;
   bottom: 0%;
   z-index: 1000;
   border-radius: 7px;
   color: rgb(27, 120, 226);
-  font-size: larger;
-  display: flex;
+  font-size: 1.2rem;
   display: block;
+  text-align: center;
 }
 
 .pic-proyect:hover {
@@ -788,7 +799,7 @@ i {
 
 .cv-download {
   width: 80%;
-  height: 300px;
+  height: max-content;
   margin: auto;
   background-color: rgba(255, 255, 0, 0);
   display: flex;
@@ -800,7 +811,7 @@ i {
 
 .cv-download span {
   color: #c0bebe;
-  font-size: 1.2rem;
+  font-size: 2rem;
   margin-bottom: 1vw;
 }
 
@@ -820,8 +831,9 @@ i {
 .cv-download a {
   transition: all 0.3s;
   color: #fff;
-  width: 200px;
-  height: 100px;
+  width: max-content;
+  height: max-content;
+  padding: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -829,7 +841,7 @@ i {
   background-color: rgba(41, 41, 41, 0.164);
   border-radius: 10px;
   text-decoration: none;
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 .download-icon {
@@ -1012,6 +1024,9 @@ i {
   h1 {
     font-size: 2.2rem;
   }
+  .pic-proyect {
+    min-width: 150px !important;
+  }
 
   #nav-box {
     display: none;
@@ -1051,7 +1066,7 @@ i {
   .skill-box {
     width: 90%;
   }
-  #intro-box{
+  #intro-box {
     width: 90%;
   }
   .down-content {
@@ -1077,18 +1092,21 @@ i {
     font-size: 2rem;
   }
   .cv-download span {
-    font-size: 1.9rem;
+    font-size: 3rem;
   }
-  .intro-txt p{
+  .intro-txt p {
     font-size: 1.5rem;
   }
-  .skills-txt p{
+  .skills-txt p {
     font-size: 1.5rem;
   }
-  #generate{
-  font-size: 1.5rem;
+  #generate {
+    font-size: 1.5rem;
   }
-  .btn-copy{
-  font-size: 1.5rem;
+  .btn-copy {
+    font-size: 1.5rem;
+  }
+  .cv-download a {
+    font-size: 3rem;
   }
 }
