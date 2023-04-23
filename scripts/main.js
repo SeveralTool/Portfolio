@@ -338,7 +338,7 @@ window.onload = () => {
         // Calcular la distancia de desplazamiento y la duración de la animación
         const startPosition = window.pageYOffset;
         const distance = targetPosition - startPosition;
-        const duration = 1000; // ajustar la duración según sea necesario
+        const duration = 800; // ajustar la duración según sea necesario
 
         // Crear una variable para guardar el tiempo de inicio
         let start = null;
