@@ -5,7 +5,7 @@
   setTimeout(() => {
     //Quitar carga de web
     load.style.display = "none";
-};
+})400;
 // elegir idioma
 let BtnES = document.getElementById("es");
 let BtnEN = document.getElementById("en");
