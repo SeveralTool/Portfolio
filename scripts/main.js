@@ -1,11 +1,12 @@
-
+// window.onload = () => {
   const load = document.getElementById("load-window");
   load.style.transition = "all 1s";
   load.style.transform = "translateY(-101%)";
   setTimeout(() => {
     //Quitar carga de web
     load.style.display = "none";
-})400;
+  }, 1000);
+// };
 // elegir idioma
 let BtnES = document.getElementById("es");
 let BtnEN = document.getElementById("en");
