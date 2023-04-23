@@ -83,8 +83,8 @@ window.onload = () => {
     // Función para detectar el nivel activo según la posición de scroll
     function detectarNivelActivo() {
       const scrollPos = window.scrollY; // Obtener posición de scroll
-    // Comparar posición de scroll con los niveles de offset
-    //   console.log(scrollPos,nivel5, nivel6)
+      // Comparar posición de scroll con los niveles de offset
+      //   console.log(scrollPos,nivel5, nivel6)
       if (scrollPos >= nivel1 && scrollPos < nivel2) {
         pintarIcono(icon1);
         pintarHr(hr1);
@@ -106,7 +106,7 @@ window.onload = () => {
         console.log("6");
       }
     }
-    detectarNivelActivo()
+    detectarNivelActivo();
     // Asignar el evento onscroll a la ventana
     window.onscroll = detectarNivelActivo;
 
@@ -261,9 +261,7 @@ window.onload = () => {
         TimerBox.style.display = "block";
         TimerBox.innerHTML = timeLeft;
 
-        console.log("false");
         countdownTimer = setInterval(() => {
-          console.log("intervalo");
           timeLeft--;
           TimerBox.innerHTML = timeLeft;
           if (timeLeft === 0) {
@@ -281,7 +279,6 @@ window.onload = () => {
         running = false;
         timeLeft = 10;
         input.innerText = defaul;
-        console.log("true");
         init;
         timer();
       }
@@ -372,9 +369,10 @@ window.onload = () => {
       ScrollReveal({
         delay: 100,
         reset: true,
-        duration: 500,
+        duration: 300,
         distance: "200px",
         easing: "ease-in-out",
+        reset: false,
       });
 
       ScrollReveal().reveal(".intro-txt", { origin: "left" });
@@ -382,11 +380,8 @@ window.onload = () => {
       ScrollReveal().reveal(".left", { origin: "left" });
       ScrollReveal().reveal(".right", { origin: "right" });
       ScrollReveal().reveal("#face", { origin: "right" });
-      ScrollReveal().reveal("#box-notifi", { origin: "top", duration: 1000 });
       ScrollReveal().reveal(".passGenerator", { origin: "right" });
       ScrollReveal().reveal(".intro-pass", { origin: "left" });
-      ScrollReveal().reveal("#nivel5", { origin: "bottom" });
-      ScrollReveal().reveal("#nivel3", { origin: "top" });
     }
     animated();
 
