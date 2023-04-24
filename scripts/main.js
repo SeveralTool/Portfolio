@@ -180,6 +180,13 @@ BtnShowPic.forEach(function (element) {
     var ocultar = that.find("div")[0];
     var BtnCerrar = that.find("i")[1];
     var BtnShow = that.find("i")[0];
+    var imgs = that.find('.img-tec')
+    // console.log(imgs)
+    for (let i = 0; i < imgs.length; i++) {
+      const img = imgs[i];
+      img.style.display = "none"
+      
+    }
     ocultar.style.display = "none";
     BtnShow.style.display = "none";
     var Load = $(this).parent().find("span")[0];
@@ -201,6 +208,11 @@ BtnClosePic.forEach(function (element) {
     var mostrar = that.find("div")[0];
     var BtnShow = that.find("i")[1];
     var BtnCerrar = that.find("i")[0];
+    var imgs = that.find('.img-tec')
+    for (let i = 0; i < imgs.length; i++) {
+      const img = imgs[i];
+      img.style.display = "block"
+    }
     ocultar.style.display = "none";
     mostrar.style.display = "block";
     BtnShow.style.display = "none";
