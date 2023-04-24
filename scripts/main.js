@@ -6,6 +6,13 @@ window.onload = () => {
     //Quitar carga de web
     load.style.display = "none";
   }, 300);
+  setTimeout(() => {
+  boxNotifi.style.display = "grid";
+  boxNotifi.style.transform = "translateX(-50%)";
+  setTimeout(() => {
+    CloseNotifi();
+  }, 15000);
+}, 10000);
 };
 // elegir idioma
 let BtnES = document.getElementById("es");
@@ -414,10 +421,4 @@ document.getElementById("close-notifi").addEventListener("click", () => {
   CloseNotifi();
 });
 
-setTimeout(() => {
-  boxNotifi.style.display = "grid";
-  boxNotifi.style.transform = "translateX(-50%)";
-  setTimeout(() => {
-    CloseNotifi();
-  }, 15000);
-}, 10000);
+
