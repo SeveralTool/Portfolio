@@ -6,13 +6,15 @@ window.onload = () => {
     //Quitar carga de web
     load.style.display = "none";
   }, 300);
-  setTimeout(() => {
+  
+setTimeout(() => {
   boxNotifi.style.display = "grid";
   boxNotifi.style.transform = "translateX(-50%)";
   setTimeout(() => {
     CloseNotifi();
   }, 15000);
 }, 10000);
+
 };
 // elegir idioma
 let BtnES = document.getElementById("es");
@@ -114,7 +116,7 @@ function detectarNivelActivo() {
   } else if (scrollPos >= nivel6 && scrollPos > nivel5) {
     pintarIcono(icon6);
     pintarHr(hr5);
-    console.log("6");
+    // console.log("6");
   }
 }
 detectarNivelActivo();
@@ -352,15 +354,15 @@ links.forEach((link) => {
     const target = this.getAttribute("href");
     const targetPosition = document.querySelector(target).offsetTop;
 
-    // Calcular la distancia de desplazamiento y la duración de la animación
+    // Calcular la distancia de desplazamiento y la duracion de la animación
     const startPosition = window.pageYOffset;
     const distance = targetPosition - startPosition;
-    const duration = 800; // ajustar la duración según sea necesario
+    const duration = 800; // ajustar la duracion segin sea necesario
 
     // Crear una variable para guardar el tiempo de inicio
     let start = null;
 
-    // Crear una función para la animación
+    // Crear una función para la animacion
     function animation(currentTime) {
       if (start === null) start = currentTime;
       const timeElapsed = currentTime - start;
@@ -369,7 +371,7 @@ links.forEach((link) => {
       if (timeElapsed < duration) requestAnimationFrame(animation);
     }
 
-    // Crear una función para la curva de aceleración
+    // Crear una función para la curva de aceleracion
     function ease(t, b, c, d) {
       t /= d / 2;
       if (t < 1) return (c / 2) * t * t + b;
@@ -416,9 +418,8 @@ function CloseNotifi() {
   }, 800);
 }
 
+//Funcion para cerrar notificacion
 const boxNotifi = document.getElementById("box-notifi");
 document.getElementById("close-notifi").addEventListener("click", () => {
   CloseNotifi();
 });
-
-
