@@ -615,6 +615,24 @@ h3 {
   color: rgba(10, 255, 10, 0.486);
 }
 
+.seccion-tec{
+  display: flex;
+  position: absolute;
+  bottom: 10px;
+  right: 2px;
+  width: max-content;
+  height: max-content;
+  flex-direction: column-reverse;
+}
+
+.img-tec{
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+}
+
+
+
 h1 {
   color: #fff;
   font-family: monospace;
@@ -762,7 +780,7 @@ i {
 
 #timer {
   display: none;
-  color: rgba(207, 1, 1, 0.925);
+  color: rgb(207, 1, 1);
   position: absolute;
   top: 5px;
   right: 5px;
@@ -1057,7 +1075,7 @@ i {
     margin-top: 20px;
   }
   #input-pass {
-    font-size: 2rem;
+    font-size: 1rem;
   }
   .cv-download {
     flex-direction: column;
@@ -1066,7 +1084,6 @@ i {
     padding: 2px;
     height: max-content;
   }
-
   .social-box {
     top: 2vh;
     right: 3vw !important;
@@ -1096,25 +1113,25 @@ i {
     padding: 35px 0;
   }
   #timer {
-    font-size: 2rem;
+    font-size: 1.3rem;
   }
   .cv-download span {
     font-size: 1.2rem;
   }
   .intro-txt p {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
   .skills-txt p {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
   #generate {
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
   .btn-copy {
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
   .cv-download a {
-    font-size: 3rem;
+    font-size: 2rem;
   }
   .link-code {
     font-size: 2rem;
@@ -1128,5 +1145,15 @@ i {
   }
   .link-code{
     font-size: 1rem;
+  }
+  .img-tec{
+    width: 20px;
+    height: 20px;
+  }
+  .desc-es {
+    font-size: 1.3rem;
+  }
+  .desc-es {
+    font-size: 1.3rem;
   }
 }
