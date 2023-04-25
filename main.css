@@ -332,7 +332,7 @@ body {
   align-items: center;
   background-color: rgba(0, 0, 0, 0);
   margin: auto;
-  align-items: start;
+  align-items: center;
 }
 
 .skills-txt {
@@ -366,7 +366,6 @@ h2 {
   justify-content: center;
   align-items: center;
   height: max-content;
-  margin-top: 2%;
   background-color: #f0e7e700;
   font-size: 0.2rem;
 }
