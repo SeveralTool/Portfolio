@@ -253,7 +253,7 @@ body {
   font-size: 3rem;
   font-style: oblique;
   font-weight: 800;
-  color: rgb(27, 120, 226)!important;
+  color: rgb(27, 120, 226) !important;
   width: max-content;
   display: flex;
   flex-direction: row;
@@ -278,21 +278,6 @@ body {
   margin: auto;
   margin-top: 100px;
   margin-bottom: 10%;
-}
-
-/*ELEMENTO PADRE (div)*/
-.box-face {
-  width: 200px;
-  height: 200px;
-  display: flex;
-  padding: 5px;
-  border: 2px solid rgb(99, 99, 99);
-  background: url(./Img`s/foto-nahuel.png);
-  background-size: cover;
-  margin: auto;
-  margin-top: 3%;
-  border-radius: 40vw;
-  overflow: hidden;
 }
 
 .intro-txt {
@@ -340,8 +325,10 @@ body {
 .skill-box {
   width: 80%;
   height: max-content;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 60% 40%;
+  justify-content: center;
+  align-items: center;
   background-color: rgba(0, 0, 0, 0);
   margin: auto;
   align-items: start;
@@ -351,7 +338,10 @@ body {
   width: 100%;
   height: max-content;
   display: flex;
+  margin: auto;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 h2 {
@@ -381,14 +371,14 @@ h2 {
 }
 
 .tagcloud--item {
-  font-size: 1.3rem;
+  font-size: 1rem;
   font-weight: lighter;
   font-family: serif;
 }
 
 .img-canvas {
-  width: 100px !important;
-  height: 100px !important;
+  width: 60px !important;
+  height: 60px !important;
 }
 
 canvas {
@@ -418,16 +408,20 @@ canvas {
   height: max-content;
   margin-bottom: 10%;
   background-color: rgba(153, 205, 50, 0);
+  justify-content: center;
 }
 
 .grid-box {
   display: grid;
   background-color: rgba(255, 99, 71, 0);
   width: 100%;
+  max-width: 1000px;
   grid-template-columns: 1fr 1fr;
   row-gap: 25px;
   justify-content: center;
   align-items: center;
+  margin: auto;
+  min-width: 300px;
 }
 
 .d {
@@ -446,6 +440,7 @@ canvas {
   padding: 5px 10px;
   overflow: hidden;
   background-color: rgba(32, 32, 32, 0.233);
+
 }
 
 .description {
@@ -569,7 +564,7 @@ h3 {
   cursor: pointer;
   border: px solid red;
   font-size: 1.3rem;
-  color: rgba(10, 255, 10, 0.486)!important;
+  color: rgba(10, 255, 10, 0.486) !important;
 }
 
 .seccion-tec {
@@ -653,7 +648,7 @@ h3 {
 }
 
 .passGenerator {
-  background-color: rgba(27, 120, 226, 0.096);
+  background-color: rgba(36, 34, 34, 0.281);
   width: 60%;
   height: max-content;
   align-items: center;
@@ -672,7 +667,8 @@ h3 {
   font-size: 1.2rem;
   cursor: default;
   user-select: none;
-  color: rgb(236, 105, 105)!important;
+  padding-top: 20px;
+  color: rgb(236, 105, 105) !important;
 }
 
 button,
@@ -727,7 +723,7 @@ i {
 
 #timer {
   display: none;
-  color: rgb(207, 1, 1)!important;
+  color: rgb(207, 1, 1) !important;
   position: absolute;
   top: 5px;
   right: 5px;
@@ -786,7 +782,7 @@ i {
 
 .cv-download span {
   color: #c0bebe;
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin-bottom: 1vw;
 }
 
@@ -926,44 +922,48 @@ i {
 
 /* FUENTE GENERAL */
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Braah+One&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Sigmar&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Braah+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sigmar&display=swap");
 
 /* TEXTOS */
-p,  span,a {
-  font-family: "Roboto", sans-serif!important;
+p,
+span,
+a {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif!important;
   font-weight: lighter;
   font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.897);
-  font-weight: 1!important;
+  color: rgba(255, 255, 255, 0.966);
+  font-weight: 1 !important;
 }
 
 /* TITULOS */
 .h {
-  font-family: 'Braah One', sans-serif!important;
+  font-family: "Braah One", sans-serif !important;
   color: #ffffff;
   margin: auto;
   text-align: center;
   margin-bottom: 5%;
   font-style: normal;
   text-decoration: none;
-  font-weight: 900!important;
+  font-weight: 900 !important;
   width: max-content;
   cursor: default;
 }
 
-.title{
-  font-family: 'Sigmar', sans-serif!important;
+h2{
+  font-weight: 300!important;
 }
 
-
-
+.title {
+  font-family: "Sigmar", sans-serif !important;
+}
 
 @media only screen and (max-width: 1350px) {
   .grid-box {
     grid-template-columns: 1fr;
+    row-gap: 10px;
+
   }
   .desc-es {
     font-size: 1.2rem;
@@ -981,12 +981,11 @@ p,  span,a {
   .grid-box {
     width: 100% !important;
   }
+
   .skills-box {
     width: 100%;
   }
-  .proyects-box {
-    width: 100%;
-  }
+
   .d {
     width: 100%;
     min-height: 300px;
@@ -1006,6 +1005,9 @@ p,  span,a {
   }
   h1 {
     font-size: 2.2rem;
+  }
+  .proyects-box{
+    width: 95%;
   }
   .pic-proyect {
     min-width: 150px !important;
@@ -1064,7 +1066,7 @@ p,  span,a {
     font-size: 2.3rem;
   }
   .d {
-    margin: 50px auto;
+    margin: 10px auto;
     padding: 35px 0;
   }
   #timer {
@@ -1111,10 +1113,15 @@ p,  span,a {
   .desc-es {
     font-size: 1.3rem;
   }
-  .title{
+  .title {
     font-size: 2rem;
   }
-  .title2, .title3{
+  .title2,
+  .title3 {
     font-size: 1rem;
+  }
+  .skill-box {
+    display: flex;
+    flex-direction: column;
   }
 }
