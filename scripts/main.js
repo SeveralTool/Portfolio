@@ -1,4 +1,6 @@
 window.onload = () => {
+    if(document.images){
+  }
   const load = document.getElementById("load-window");
   load.style.transition = "all 0.5s";
   load.style.transform = "translateY(-101%)";
