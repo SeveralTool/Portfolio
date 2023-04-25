@@ -3,9 +3,10 @@ import * as THREE from "./three-module.js";
 // TagCloud.js ESFERA
 //labels
 const Texts = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
-var width = window.innerWidth;
+var width = document.getElementById('canvas') .offsetWidth;
+console.log(width)
 var options = {
-  radius: width * 0.345,
+  radius: width * 0.5,
   maxSpeed: "normal",
   initSpeed: "slow",
   direction: 605,
