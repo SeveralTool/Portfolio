@@ -1,5 +1,5 @@
 window.onload = () => {
-    if(document.images){
+  if (document.images) {
   }
   const load = document.getElementById("load-window");
   load.style.transition = "all 0.5s";
@@ -8,16 +8,16 @@ window.onload = () => {
     //Quitar carga de web
     load.style.display = "none";
   }, 300);
-  
-setTimeout(() => {
-  boxNotifi.style.display = "grid";
-  boxNotifi.style.transform = "translateX(-50%)";
-  setTimeout(() => {
-    CloseNotifi();
-  }, 15000);
-}, 10000);
 
+  setTimeout(() => {
+    boxNotifi.style.display = "grid";
+    boxNotifi.style.transform = "translateX(-50%)";
+    setTimeout(() => {
+      CloseNotifi();
+    }, 10000);
+  }, 10000);
 };
+
 // elegir idioma
 let BtnES = document.getElementById("es");
 let BtnEN = document.getElementById("en");
@@ -66,7 +66,7 @@ const nivel2 = document.getElementById("intro-box").offsetTop - 70;
 const nivel3 = document.getElementById("nivel3").offsetTop - 70;
 const nivel4 = document.getElementById("nivel4").offsetTop - 70;
 const nivel5 = document.getElementById("nivel5").offsetTop - 70;
-const nivel6 = document.getElementById("nivel6").offsetTop + 70;
+const nivel6 = document.getElementById("nivel6").offsetTop - 70;
 // console.log(nivel1,nivel2,nivel3,nivel4,nivel5,nivel6)
 
 //PINTAR EL PRIMER NIVEL AL INICIO
@@ -99,7 +99,7 @@ function pintarHr(hrs) {
 function detectarNivelActivo() {
   const scrollPos = window.scrollY; // Obtener posición de scroll
   // Comparar posición de scroll con los niveles de offset
-  //   console.log(scrollPos,nivel5, nivel6)
+  // console.log(scrollPos,nivel5, nivel6)
   if (scrollPos >= nivel1 && scrollPos < nivel2) {
     pintarIcono(icon1);
     pintarHr(hr1);
@@ -191,12 +191,11 @@ BtnShowPic.forEach(function (element) {
     var ocultar = that.find("div")[0];
     var BtnCerrar = that.find("i")[1];
     var BtnShow = that.find("i")[0];
-    var imgs = that.find('.img-tec')
+    var imgs = that.find(".img-tec");
     // console.log(imgs)
     for (let i = 0; i < imgs.length; i++) {
       const img = imgs[i];
-      img.style.display = "none"
-      
+      img.style.display = "none";
     }
     ocultar.style.display = "none";
     BtnShow.style.display = "none";
@@ -219,10 +218,10 @@ BtnClosePic.forEach(function (element) {
     var mostrar = that.find("div")[0];
     var BtnShow = that.find("i")[1];
     var BtnCerrar = that.find("i")[0];
-    var imgs = that.find('.img-tec')
+    var imgs = that.find(".img-tec");
     for (let i = 0; i < imgs.length; i++) {
       const img = imgs[i];
-      img.style.display = "block"
+      img.style.display = "block";
     }
     ocultar.style.display = "none";
     mostrar.style.display = "block";
