@@ -16,7 +16,7 @@ img {
 }
 
 html {
-  background-color: #1f1e1e00;
+  background-color: #000000;
   scroll-behavior: smooth !important;
   overflow-x: hidden;
   min-width: 330px !important;
@@ -24,7 +24,7 @@ html {
 
 body {
   width: 97%;
-  height: max-content;
+  height: 100%;
   padding: 0 !important;
   margin: 0 !important;
   background-color: #00000000;
@@ -581,6 +581,7 @@ h3 {
   width: 30px;
   height: 30px;
   padding: 5px;
+  z-index: 10;
 }
 
 .loader-container {
@@ -778,7 +779,7 @@ i {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20%;
+  margin-bottom: 40%;
 }
 
 .cv-download span {
@@ -866,6 +867,7 @@ i {
   max-width: 80%;
   height: max-content;
   min-height: 50px;
+  max-height: max-content;
   margin: auto;
   display: none;
   grid-template-columns: 1fr 50px;
@@ -874,12 +876,13 @@ i {
   align-self: center;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.877);
+  background-color: rgba(0, 0, 0, 0.925);
   color: #ffffff;
-  border-radius: 5px;
+  border-radius: 15px;
   left: 50%;
   z-index: 100;
   font-size: 1.2rem;
+  flex-basis: 150px !important;
 }
 
 .box-notifi span {
@@ -889,7 +892,7 @@ i {
 
 .close-box {
   width: 100%;
-  height: 100%;
+  height: max-content;
   background-color: rgba(255, 0, 0, 0.048);
   display: flex;
   justify-content: center;
@@ -903,6 +906,7 @@ i {
 .close-notifi {
   font-size: 1.5rem;
   color: rgb(255, 0, 0);
+  padding: 5px;
 }
 
 .box-contributions {
@@ -1064,7 +1068,7 @@ h2 {
     font-size: 1rem;
   }
   .i {
-    font-size: 5vw !important;
+    font-size: 2rem !important;
     margin: auto;
   }
   .tagcloud--item {
@@ -1119,7 +1123,7 @@ h2 {
     font-size: 1rem;
   }
   .title {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
   .title2,
   .title3 {
