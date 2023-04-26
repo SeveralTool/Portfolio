@@ -1,57 +1,94 @@
 import * as THREE from "./three-module.js";
 
 // TagCloud.js ESFERA
-//labels
-const Texts = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
-var width = document.getElementById('canvas') .offsetWidth;
-console.log(width)
-var options = {
-  radius: width * 0.5,
-  maxSpeed: "normal",
-  initSpeed: "slow",
-  direction: 605,
-  fps: 60,
-  keep: true,
-  backgroungColor: "#FFFF",
-  sort: "a-z",
-};
+function setCanvas() {
+  //labels
+  const Texts = [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+  ];
+  var width = document.getElementById("canvas").offsetWidth;
+  // console.log(width);
+  var options = {
+    radius: width * 0.5,
+    maxSpeed: "normal",
+    initSpeed: "slow",
+    direction: 605,
+    fps: 60,
+    keep: true,
+    backgroungColor: "#FFFF",
+    sort: "a-z",
+  };
+  //settings
+  var tagCloud = TagCloud("#canvas", Texts, options);
+}
+setCanvas();
 
-//settings
-var tagCloud = TagCloud("#canvas", Texts, options);
-document.getElementById("canvas").style.color = "rgb(27, 120, 226)";
+// function setTagCloudRadius(newRadius) {
+//   // Llama a la función setRadius en el objeto TagCloud con el nuevo valor de radio
+//   tagCloud.setRadius(newRadius);
+// }
+
+// Luego puedes llamar a la función setTagCloudRadius con el nuevo radio que desees
+window.addEventListener("resize", () => {
+  var element = document.getElementById("canvas");
+  element.innerText = "";
+  setCanvas();
+  addImgs();
+  // document.getElementById("html0").style.width = "100%";
+  // document.getElementById("html0").style.height = "100%";
+  // document.getElementById("html").style.width = "100%";
+  // document.getElementById("html").style.height = "100%";
+});
 
 //Crear elemento donde van las imgs
-var tags = [];
-tags = document.querySelectorAll(".tagcloud--item");
+function addImgs() {
+  var tags = [];
+  tags = document.querySelectorAll(".tagcloud--item");
 
-//Crear el array con las rutas de las imgs
-const imagenes = [
-  "./Img`s/icons/charts.png",
-  "./Img`s/icons/css-3.png",
-  "./Img`s/icons/Django-Logo.png",
-  "./Img`s/icons/docker.png",
-  "./Img`s/icons/fast.png",
-  "./Img`s/icons/git.png",
-  "./Img`s/icons/html-5.png",
-  "./Img`s/icons/jquery.png",
-  "./Img`s/icons/js.png",
-  "./Img`s/icons/linux.png",
-  "./Img`s/icons/mongo.png",
-  "./Img`s/icons/mysql.png",
-  "./Img`s/icons/php.png",
-  "./Img`s/icons/physics.png",
-  "./Img`s/icons/piton.png",
-  "./Img`s/icons/Three.js.png",
-];
+  //Crear el array con las rutas de las imgs
+  const imagenes = [
+    "./Img`s/icons/charts.png",
+    "./Img`s/icons/css-3.png",
+    "./Img`s/icons/Django-Logo.png",
+    "./Img`s/icons/docker.png",
+    "./Img`s/icons/fast.png",
+    "./Img`s/icons/git.png",
+    "./Img`s/icons/html-5.png",
+    "./Img`s/icons/jquery.png",
+    "./Img`s/icons/js.png",
+    "./Img`s/icons/linux.png",
+    "./Img`s/icons/mongo.png",
+    "./Img`s/icons/mysql.png",
+    "./Img`s/icons/php.png",
+    "./Img`s/icons/physics.png",
+    "./Img`s/icons/piton.png",
+    "./Img`s/icons/Three.js.png",
+  ];
 
-for (var i = 0; i < tags.length; i++) {
-  // tagArray.push(tags[i]);
-  const img = document.createElement("img");
-  img.src = imagenes[i];
-  img.classList.add("img-canvas");
-  tags[i].appendChild(img);
+  for (var i = 0; i < tags.length; i++) {
+    // tagArray.push(tags[i]);
+    const img = document.createElement("img");
+    img.src = imagenes[i];
+    img.classList.add("img-canvas");
+    tags[i].appendChild(img);
+  }
 }
-
+addImgs();
 ////////////////////////////////////////////////////////
 
 //THREE GEOMETRY
