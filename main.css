@@ -637,15 +637,20 @@ h3 {
   height: max-content;
   border-radius: 10px 0px 0px 10px;
   color: #ffffff;
+  text-align: center;
 }
 
 .intro-pass p {
   font-size: 1.2rem;
+  text-align: left;
+  margin: 0 10px 10px 10px;
 }
 
 .lock {
   color: rgb(10, 255, 10);
-  padding: 3px;
+  padding: 5px;
+  margin: auto;
+  margin: 5px;
 }
 
 .passGenerator {
@@ -955,6 +960,11 @@ a {
   font-weight: 900 !important;
   width: max-content;
   cursor: default;
+    word-wrap: break-word; /* Permite que la palabra se rompa en varias líneas */
+    overflow-wrap: break-word; /* Propiedad alternativa para navegadores más nuevos */
+    -ms-word-break: break-all; /* Propiedad para navegadores antiguos de Microsoft */
+    word-break: break-all; /* Propiedad para navegadores más nuevos */
+  
 }
 
 h2 {
@@ -964,6 +974,11 @@ h2 {
 .title {
   font-family: "Sigmar", sans-serif !important;
 }
+
+.br{
+  display: none;
+}
+
 
 @media only screen and (max-width: 1350px) {
   .grid-box {
@@ -1135,5 +1150,8 @@ h2 {
   }
   #nivel5 {
     font-size: 1.5rem;
+  }
+  .br{
+    display: block;
   }
 }
