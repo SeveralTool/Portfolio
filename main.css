@@ -288,13 +288,32 @@ body {
   height: max-content;
   margin: auto;
   position: relative;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 0.3fr 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
 }
+
+.leng-select { grid-area: 1 / 4 / 2 / 5; }
+.p-intro-div { grid-area: 2 / 1 / 4 / 4; }
+.box-face { grid-area: 2 / 4 / 3 / 5; }
 
 .intro-txt p {
   font-size: 1.2rem;
   font-weight: 100;
+}
+
+.box-face {
+  width: 200px;
+  height: 200px;
+  margin: auto;
+  border: px solid red;
+  border-radius: 40%;
+  background-image: url(./Img`s/face1.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .leng-select {
@@ -302,7 +321,7 @@ body {
   width: max-content;
   height: max-content;
   display: flex;
-  align-self: self-end;
+  justify-self: end;
   color: #fff;
   margin-bottom: 10px;
 }
@@ -960,11 +979,10 @@ a {
   font-weight: 900 !important;
   width: max-content;
   cursor: default;
-    word-wrap: break-word; /* Permite que la palabra se rompa en varias líneas */
-    overflow-wrap: break-word; /* Propiedad alternativa para navegadores más nuevos */
-    -ms-word-break: break-all; /* Propiedad para navegadores antiguos de Microsoft */
-    word-break: break-all; /* Propiedad para navegadores más nuevos */
-  
+  word-wrap: break-word; /* Permite que la palabra se rompa en varias líneas */
+  overflow-wrap: break-word; /* Propiedad alternativa para navegadores más nuevos */
+  -ms-word-break: break-all; /* Propiedad para navegadores antiguos de Microsoft */
+  word-break: break-all; /* Propiedad para navegadores más nuevos */
 }
 
 h2 {
@@ -975,10 +993,9 @@ h2 {
   font-family: "Sigmar", sans-serif !important;
 }
 
-.br{
+.br {
   display: none;
 }
-
 
 @media only screen and (max-width: 1350px) {
   .grid-box {
@@ -1151,7 +1168,14 @@ h2 {
   #nivel5 {
     font-size: 1.5rem;
   }
-  .br{
+  .br {
     display: block;
+  }
+  .intro-txt{
+    display: flex;
+    flex-direction: column;
+  }
+  .box-face{
+    margin-top: 0;
   }
 }
