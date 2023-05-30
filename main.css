@@ -1,3 +1,9 @@
+/* FUENTE GENERAL */
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Braah+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sigmar&display=swap");
+
 * {
   border: px solid red;
   padding: 0;
@@ -295,9 +301,15 @@ body {
   grid-row-gap: 0px;
 }
 
-.leng-select { grid-area: 1 / 4 / 2 / 5; }
-.p-intro-div { grid-area: 2 / 1 / 4 / 4; }
-.box-face { grid-area: 2 / 4 / 3 / 5; }
+.leng-select {
+  grid-area: 1 / 4 / 2 / 5;
+}
+.p-intro-div {
+  grid-area: 2 / 1 / 4 / 4;
+}
+.box-face {
+  grid-area: 2 / 4 / 3 / 5;
+}
 
 .intro-txt p {
   font-size: 1.2rem;
@@ -446,47 +458,59 @@ canvas {
 .d {
   transition: all 0.3s;
   width: 90%;
-  height: 95%;
+  height: calc(100%);
   min-height: 350px;
   position: relative;
   color: #ffffff;
-  margin: 10px auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 5px;
-  padding: 5px 10px;
+  display: grid;
+  grid-template-rows: 50% 50%;
+  border-radius: 15px 15px 0 0;
   overflow: hidden;
-  background-color: rgba(32, 32, 32, 0.233);
+  background-color: rgba(36, 34, 34, 0.281);
+}
+
+.d-mobile {
+  transition: all 0.3s;
+  width: 90%;
+  height: 100%;
+  min-height: 350px;
+  position: relative;
+  color: #ffffff;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  border-radius: 15px 0 0 15px;
+  overflow: hidden;
+  background-color: rgba(36, 34, 34, 0.281);
 }
 
 .description {
   transition: all 0.3s;
   display: block;
-  margin-bottom: 15px;
+  margin-top: 5%;
 }
 
-h3 {
-  width: max-content;
-  color: #fff;
-  font-size: 1.3rem;
-  padding-top: 5px;
-  font-weight: 200;
+.title-proyect {
+  font-family: "Braah One", sans-serif !important;
+  color: #ffffff;
   margin: auto;
-  margin-bottom: 5px;
-  border-bottom: px solid #fff;
-  cursor: default;
+  text-align: left;
+  margin-left: 10px;
+}
+
+.description p {
+  text-align: left;
+  margin: auto 0 auto 1vw;
 }
 
 .desc-es {
   width: 80%;
-  margin: auto;
+  text-align: left;
   font-size: 1rem;
 }
 .desc-en {
   width: 80%;
-  margin: auto;
+  text-align: left;
+  margin: 1vw;
   font-size: 1rem;
 }
 
@@ -495,17 +519,31 @@ h3 {
   height: 100%;
   background-color: rgba(238, 130, 238, 0);
   overflow: hidden;
-  display: none;
   justify-content: center;
   align-items: end;
-  display: none;
+  display: block;
 }
 
-.carruseles2 img {
-  object-fit: contain;
+.carruseles img {
+  width: 100%;
+  height: 100% !important;
+  min-height: 100%;
+  object-fit: fill;
+}
+
+.slick-list {
   width: 100%;
   height: 100%;
-  max-height: 300px !important;
+}
+
+.slick-track {
+  width: 100%;
+  height: 100%;
+}
+
+.slick-slide {
+  object-fit: cover !important;
+  min-height: 300px !important;
 }
 
 .carruseles {
@@ -513,83 +551,35 @@ h3 {
   height: 100%;
   background-color: rgba(238, 130, 238, 0);
   overflow: hidden;
-  display: none;
+  display: block;
   justify-content: center;
   align-items: end;
 }
 
-.slick-list {
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-}
-
-.slick-track {
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-}
-
-.slick-slide {
-  object-fit: contain !important;
-  height: 300px !important;
-}
-
-.pic-proyect {
-  background-color: rgba(40, 41, 40, 0.575);
-  padding: 15px;
-  color: red;
-  width: max-content;
-  min-width: max-content;
-  z-index: 1000;
-  border-radius: 7px;
-  color: rgb(27, 120, 226);
-  font-size: 1.2rem;
-  display: block;
-  text-align: center;
-  position: absolute;
-  bottom: 10px;
-}
-
-.pic-proyect:hover {
-  transition: all 0.3s;
-  background-color: rgba(40, 41, 40, 0.212);
-}
-
-.close2 {
-  transition: all 0.3s;
-  background-color: rgba(40, 41, 40, 0);
-  padding: 10px;
-  position: absolute;
-  min-width: min-content;
-  color: red;
-  bottom: 3%;
-  z-index: 1000;
-  border-radius: 7px;
-  margin: auto;
-  font-size: larger;
-  display: none;
-}
-
-.close2:hover {
-  transition: all 0.3s;
-  background-color: rgba(228, 0, 0, 0.137);
-}
-
 .link-code {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  bottom: 5px;
+  left: 5px;
+  width: max-content;
+  padding: 5px;
+  margin: 5px;
   cursor: pointer;
-  border: px solid red;
-  font-size: 1.3rem;
-  color: rgba(10, 255, 10, 0.486) !important;
+  border-radius: 7%;
+  font-size: 0.6rem;
+  color: rgb(255, 255, 255);
+  background-color: rgb(27, 120, 226);
+  border: 2px solid rgb(13, 86, 170);
+}
+
+.link-code-mobile {
+  left: auto;
+  right: 40%;
 }
 
 .seccion-tec {
   display: flex;
   position: absolute;
-  bottom: 10px;
+  bottom: 5px;
   right: 2px;
   width: max-content;
   height: max-content;
@@ -601,21 +591,6 @@ h3 {
   height: 30px;
   padding: 5px;
   z-index: 10;
-}
-
-.loader-container {
-  display: none;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  z-index: 100;
-}
-
-.loader {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
@@ -923,10 +898,6 @@ i {
   align-items: center;
 }
 
-.close-box:hover {
-  background-color: rgba(255, 0, 0, 0.144);
-}
-
 .close-notifi {
   font-size: 1.5rem;
   color: rgb(255, 0, 0);
@@ -949,12 +920,6 @@ i {
   height: 80% !important;
   margin: auto;
 }
-
-/* FUENTE GENERAL */
-
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Braah+One&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Sigmar&display=swap");
 
 /* TEXTOS */
 p,
@@ -1034,6 +999,15 @@ h2 {
     padding: 0;
     margin: 0;
   }
+
+  .d-mobile {
+    width: 100%;
+    min-height: 300px;
+    height: max-content;
+    padding: 0;
+    margin: 0;
+  }
+
   .description {
     width: 100%;
     height: max-content;
@@ -1106,10 +1080,7 @@ h2 {
   .tagcloud--item {
     font-size: 2.3rem;
   }
-  .d {
-    margin: 10px auto;
-    padding: 35px 0;
-  }
+
   #timer {
     font-size: 1.3rem;
   }
@@ -1144,6 +1115,9 @@ h2 {
   .link-code {
     font-size: 1rem;
   }
+  .link-code-mobile {
+    left: 45%;
+  }
   .img-tec {
     width: 20px;
     height: 20px;
@@ -1171,11 +1145,11 @@ h2 {
   .br {
     display: block;
   }
-  .intro-txt{
+  .intro-txt {
     display: flex;
     flex-direction: column;
   }
-  .box-face{
+  .box-face {
     margin-top: 0;
   }
 }
