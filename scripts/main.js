@@ -385,25 +385,25 @@ links.forEach((link) => {
 });
 
 //ScrollReveal.js
-function animated() {
-  ScrollReveal({
-    delay: 100,
-    reset: true,
-    duration: 300,
-    distance: "200px",
-    easing: "ease-in-out",
-    reset: false,
-  });
+// function animated() {
+//   ScrollReveal({
+//     delay: 100,
+//     reset: true,
+//     duration: 300,
+//     distance: "200px",
+//     easing: "ease-in-out",
+//     reset: false,
+//   });
 
-  ScrollReveal().reveal(".intro-txt", { origin: "left" });
-  ScrollReveal().reveal(".skills-txt", { origin: "right" });
-  ScrollReveal().reveal(".left", { origin: "left" });
-  ScrollReveal().reveal(".right", { origin: "right" });
-  ScrollReveal().reveal("#face", { origin: "right" });
-  ScrollReveal().reveal(".passGenerator", { origin: "right" });
-  ScrollReveal().reveal(".intro-pass", { origin: "left" });
-}
-animated();
+//   ScrollReveal().reveal(".intro-txt", { origin: "left" });
+//   ScrollReveal().reveal(".skills-txt", { origin: "right" });
+//   ScrollReveal().reveal(".left", { origin: "left" });
+//   ScrollReveal().reveal(".right", { origin: "right" });
+//   ScrollReveal().reveal("#face", { origin: "right" });
+//   ScrollReveal().reveal(".passGenerator", { origin: "right" });
+//   ScrollReveal().reveal(".intro-pass", { origin: "left" });
+// }
+// animated();
 
 //NOTIFICACION
 
