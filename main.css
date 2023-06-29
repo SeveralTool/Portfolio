@@ -248,17 +248,15 @@ body {
   display: flex;
   width: max-content;
   font-size: 6rem;
-  font-style: oblique;
+  font-style: italic;
   font-weight: 700;
   color: #ffffff;
   width: max-content;
-  z-index: 1;
-  padding-left: 1%;
 }
 
 .title2 {
   font-size: 3rem;
-  font-style: oblique;
+  font-style: italic;
   font-weight: 800;
   color: rgb(27, 120, 226) !important;
   width: max-content;
@@ -266,7 +264,48 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  z-index: 20;
+}
+
+.headBotons {
+  display: flex;
+  width: max-content;
+  height: max-content;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  padding: 5px;
+  background-color: transparent;
+}
+
+.headBotons a {
+  margin: auto;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.headBotons a button {
+  transition: all 0.4s;
+  font-family: "Braah One", sans-serif;
+  font-style: italic;
+  background-color: rgba(27, 120, 226, 0.349);
+  color: #fff;
+  padding: 10px;
+  font-size: 0.9rem;
+  border: 0;
+  text-decoration: none;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.headBotons a button:hover {
+  transition: all 0.3s;
+  background-color: rgba(27, 120, 226);
+  -webkit-box-shadow: 0px 0px 24px 0px rgba(27, 120, 226, 1);
+  -moz-box-shadow: 0px 0px 24px 0px rgba(27, 120, 226, 1);
+  box-shadow: 0px 0px 24px 0px rgba(27, 120, 226, 1);
 }
 
 .arrow-txt {
@@ -436,7 +475,7 @@ canvas {
 .proyects-box {
   width: 80%;
   margin: auto;
-  height: max-content;
+  height: 100%;
   margin-bottom: 10%;
   background-color: rgba(153, 205, 50, 0);
   justify-content: center;
@@ -491,7 +530,7 @@ canvas {
 
 .title-proyect {
   font-family: "Braah One", sans-serif !important;
-  color: #ffffff;
+  color: #e0e0e0;
   margin: auto;
   text-align: left;
   margin-left: 10px;
@@ -542,7 +581,7 @@ canvas {
 }
 
 .slick-slide {
-  object-fit: cover !important;
+  object-fit: contain !important;
   min-height: 300px !important;
 }
 
@@ -568,12 +607,18 @@ canvas {
   font-size: 0.6rem;
   color: rgb(255, 255, 255);
   background-color: rgb(27, 120, 226);
-  border: 2px solid rgb(13, 86, 170);
 }
 
 .link-code-mobile {
   left: auto;
   right: 40%;
+}
+
+.disabledSource {
+  background-color: rgba(27, 120, 226, 0.384);
+
+  pointer-events: none;
+  cursor: cell;
 }
 
 .seccion-tec {
@@ -778,12 +823,12 @@ i {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 40%;
+  margin-bottom: 20%;
 }
 
 .cv-download span {
   color: #c0bebe;
-  font-size: 1.5rem;
+  font-size: 1rem;
   margin-bottom: 1vw;
 }
 
@@ -805,7 +850,7 @@ i {
   color: #fff;
   width: max-content;
   height: max-content;
-  padding: 30px;
+  padding: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -822,14 +867,21 @@ i {
 }
 
 .cv-download a:hover {
-  transition: opacity 400ms all 0.3s;
-  background-color: rgba(27, 120, 226, 0.363);
+  transition: all 0.3s;
+  background-color: rgba(27, 120, 226);
+  -webkit-box-shadow: 0px 0px 24px 0px rgba(27, 120, 226, 1);
+  -moz-box-shadow: 0px 0px 24px 0px rgba(27, 120, 226, 1);
+  box-shadow: 0px 0px 24px 0px rgba(27, 120, 226, 1);
+}
+
+.cv-download a:hover > .download-icon{
+  color: #fff;
 }
 
 /*SEPARADORES DE SECCION */
 
 .spinner {
-  color: #fff;
+  color: #000000;
   font-family: Consolas, Menlo, Monaco, monospace;
   font-weight: bold;
   opacity: 0.8;
@@ -840,7 +892,7 @@ i {
 
 .spinner span {
   font-size: 5rem;
-  color: dodgerblue;
+  color: rgb(0, 0, 0);
   display: inline-block;
   padding: 3px;
   animation: pulse_414 1s alternate infinite ease-in-out;
@@ -954,28 +1006,17 @@ h2 {
   font-weight: 300 !important;
 }
 
-.title {
-  font-family: "Sigmar", sans-serif !important;
+.title,
+.title2 {
+  word-wrap: break-word; /* Permite que la palabra se rompa en varias líneas */
+  font-family: "Braah One", sans-serif !important;
 }
 
 .br {
   display: none;
 }
 
-@media only screen and (max-width: 1350px) {
-  .grid-box {
-    grid-template-columns: 1fr;
-    row-gap: 10px;
-  }
-  .desc-es {
-    font-size: 1.2rem;
-  }
-  .desc-es {
-    font-size: 1.2rem;
-  }
-}
-
-@media only screen and (max-width: 1250px) {
+@media only screen and (max-width: 1249px) {
   .cv-download .passGenerator .proyects-box .skill-box .intro-box {
     width: 100% !important;
   }
@@ -1021,8 +1062,14 @@ h2 {
   h1 {
     font-size: 2.2rem;
   }
+  .headBotons a button {
+    font-size: 0.8rem;
+  }
   .proyects-box {
-    width: 95%;
+    width: 70%;
+  }
+  .grid-box {
+    grid-template-columns: 1fr;
   }
   .pic-proyect {
     min-width: 30px !important;
@@ -1074,18 +1121,17 @@ h2 {
     font-size: 1rem;
   }
   .i {
-    font-size: 2rem !important;
+    font-size: 1.3rem !important;
     margin: auto;
   }
   .tagcloud--item {
     font-size: 2.3rem;
   }
-
   #timer {
     font-size: 1.3rem;
   }
   .cv-download span {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
   .intro-txt p {
     font-size: 1rem;
@@ -1100,10 +1146,7 @@ h2 {
     font-size: 1rem;
   }
   .cv-download a {
-    font-size: 2rem;
-  }
-  .link-code {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
   .img-canvas {
     width: 50px !important;
@@ -1113,7 +1156,7 @@ h2 {
     font-size: 1rem;
   }
   .link-code {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
   .link-code-mobile {
     left: 45%;
@@ -1124,9 +1167,7 @@ h2 {
   }
   .desc-es {
     font-size: 1rem;
-  }
-  .desc-es {
-    font-size: 1rem;
+    margin-bottom: 20px !important;
   }
   .title {
     font-size: 2.5rem;
@@ -1151,5 +1192,21 @@ h2 {
   }
   .box-face {
     margin-top: 0;
+  }
+}
+
+@media only screen and (max-width: 560px) {
+  .proyects-box {
+    width: 95%;
+  }
+  .title {
+    font-size: 2rem;
+    box-sizing: border-box;
+  }
+  .title2 {
+    font-size: 1.2rem;
+  }
+  .headBotons a button {
+    font-size: 0.7rem;
   }
 }

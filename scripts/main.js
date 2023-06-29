@@ -9,13 +9,13 @@ window.onload = () => {
     load.style.display = "none";
   }, 300);
 
-  setTimeout(() => {
-    boxNotifi.style.display = "grid";
-    boxNotifi.style.transform = "translateX(-50%)";
-    setTimeout(() => {
-      CloseNotifi();
-    }, 10000);
-  }, 10000);
+  // setTimeout(() => {
+  //   boxNotifi.style.display = "grid";
+  //   boxNotifi.style.transform = "translateX(-50%)";
+  //   setTimeout(() => {
+  //     CloseNotifi();
+  //   }, 10000);
+  // }, 10000);
 };
 
 // elegir idioma
@@ -61,12 +61,15 @@ var icon4 = document.getElementById("icon-nav-4");
 var icon5 = document.getElementById("icon-nav-5");
 var icon6 = document.getElementById("icon-nav-6");
 
-const nivel1 = document.getElementById("html").offsetTop - 70;
-const nivel2 = document.getElementById("intro-box").offsetTop - 70;
-const nivel3 = document.getElementById("nivel3").offsetTop - 70;
-const nivel4 = document.getElementById("nivel4").offsetTop - 70;
-const nivel5 = document.getElementById("nivel5").offsetTop - 70;
-const nivel6 = document.getElementById("nivel6").offsetTop - 70;
+const nivel1 = document.getElementById("html").offsetTop;
+const nivel2 = document.getElementById("intro-box").offsetTop;
+const nivel3 = document.getElementById("nivel3").offsetTop;
+const nivel4 = document.getElementById("nivel4").offsetTop;
+const nivel5 = document.getElementById("nivel5").offsetTop-5000;
+const nivel6 = document.getElementById("nivel6").offsetTop-5000;
+
+
+
 // console.log(nivel1,nivel2,nivel3,nivel4,nivel5,nivel6)
 
 //PINTAR EL PRIMER NIVEL AL INICIO
@@ -99,7 +102,13 @@ function pintarHr(hrs) {
 function detectarNivelActivo() {
   const scrollPos = window.scrollY; // Obtener posición de scroll
   // Comparar posición de scroll con los niveles de offset
-  // console.log(scrollPos,nivel5, nivel6)
+  console.log("Pos actual: "+ scrollPos);
+  console.log("Nivel1: "+ nivel1);
+  console.log("Nivel2: "+ nivel2);
+  console.log("Nivel3: "+ nivel3);
+  console.log("Nivel4: "+ nivel4);
+  console.log("Nivel5: "+ nivel5);
+  console.log("Nivel6: "+ nivel6);
   if (scrollPos >= nivel1 && scrollPos < nivel2) {
     pintarIcono(icon1);
     pintarHr(hr1);
@@ -115,12 +124,13 @@ function detectarNivelActivo() {
   } else if (scrollPos >= nivel5 && scrollPos < nivel6) {
     pintarIcono(icon5);
     pintarHr(hr5);
-  } else if (scrollPos >= nivel6 && scrollPos > nivel5) {
+  } else if (scrollPos >= nivel6) {
     pintarIcono(icon6);
     pintarHr(hr5);
     // console.log("6");
   }
 }
+
 detectarNivelActivo();
 // Asignar el evento onscroll a la ventana
 window.onscroll = detectarNivelActivo;
@@ -182,53 +192,53 @@ $(document).ready(function () {
 ///////////////////////////////////////
 
 // DYNAMIC PROYECT PICS VIEWER
-const BtnShowPic = document.querySelectorAll(".pic-proyect");
-const BtnClosePic = document.querySelectorAll(".close2");
+// const BtnShowPic = document.querySelectorAll(".pic-proyect");
+// const BtnClosePic = document.querySelectorAll(".close2");
 
-BtnShowPic.forEach(function (element) {
-  element.addEventListener("click", function () {
-    var that = $(this).parent();
-    var ocultar = that.find("div")[0];
-    var BtnCerrar = that.find("i")[1];
-    var BtnShow = that.find("i")[0];
-    var imgs = that.find(".img-tec");
-    // console.log(imgs)
-    for (let i = 0; i < imgs.length; i++) {
-      const img = imgs[i];
-      img.style.display = "none";
-    }
-    ocultar.style.display = "none";
-    BtnShow.style.display = "none";
-    var Load = $(this).parent().find("span")[0];
-    Load.style.display = "flex";
-    // console.log(Load)
-    setTimeout(() => {
-      Load.style.display = "none";
-      BtnCerrar.style.display = "block";
-      var mostrar = that.find("div")[1];
-      mostrar.style.display = "block";
-    }, 2000);
-  });
-});
+// BtnShowPic.forEach(function (element) {
+//   element.addEventListener("click", function () {
+//     var that = $(this).parent();
+//     var ocultar = that.find("div")[0];
+//     var BtnCerrar = that.find("i")[1];
+//     var BtnShow = that.find("i")[0];
+//     var imgs = that.find(".img-tec");
+//     // console.log(imgs)
+//     for (let i = 0; i < imgs.length; i++) {
+//       const img = imgs[i];
+//       img.style.display = "none";
+//     }
+//     ocultar.style.display = "none";
+//     BtnShow.style.display = "none";
+//     var Load = $(this).parent().find("span")[0];
+//     Load.style.display = "flex";
+//     // console.log(Load)
+//     setTimeout(() => {
+//       Load.style.display = "none";
+//       BtnCerrar.style.display = "block";
+//       var mostrar = that.find("div")[1];
+//       mostrar.style.display = "block";
+//     }, 2000);
+//   });
+// });
 
-BtnClosePic.forEach(function (element) {
-  element.addEventListener("click", function () {
-    var that = $(this).parent();
-    var ocultar = that.find("div")[1];
-    var mostrar = that.find("div")[0];
-    var BtnShow = that.find("i")[1];
-    var BtnCerrar = that.find("i")[0];
-    var imgs = that.find(".img-tec");
-    for (let i = 0; i < imgs.length; i++) {
-      const img = imgs[i];
-      img.style.display = "block";
-    }
-    ocultar.style.display = "none";
-    mostrar.style.display = "block";
-    BtnShow.style.display = "none";
-    BtnCerrar.style.display = "block";
-  });
-});
+// BtnClosePic.forEach(function (element) {
+//   element.addEventListener("click", function () {
+//     var that = $(this).parent();
+//     var ocultar = that.find("div")[1];
+//     var mostrar = that.find("div")[0];
+//     var BtnShow = that.find("i")[1];
+//     var BtnCerrar = that.find("i")[0];
+//     var imgs = that.find(".img-tec");
+//     for (let i = 0; i < imgs.length; i++) {
+//       const img = imgs[i];
+//       img.style.display = "block";
+//     }
+//     ocultar.style.display = "none";
+//     mostrar.style.display = "block";
+//     BtnShow.style.display = "none";
+//     BtnCerrar.style.display = "block";
+//   });
+// });
 
 ///////////////////////////////////////
 
@@ -385,25 +395,25 @@ links.forEach((link) => {
 });
 
 //ScrollReveal.js
-// function animated() {
-//   ScrollReveal({
-//     delay: 100,
-//     reset: true,
-//     duration: 300,
-//     distance: "200px",
-//     easing: "ease-in-out",
-//     reset: false,
-//   });
+function animated() {
+  ScrollReveal({
+    delay: 100,
+    reset: true,
+    duration: 500,
+    distance: "200px",
+    easing: "ease-in-out",
+    reset: false,
+  });
 
-//   ScrollReveal().reveal(".intro-txt", { origin: "left" });
-//   ScrollReveal().reveal(".skills-txt", { origin: "right" });
-//   ScrollReveal().reveal(".left", { origin: "left" });
-//   ScrollReveal().reveal(".right", { origin: "right" });
-//   ScrollReveal().reveal("#face", { origin: "right" });
-//   ScrollReveal().reveal(".passGenerator", { origin: "right" });
-//   ScrollReveal().reveal(".intro-pass", { origin: "left" });
-// }
-// animated();
+  // ScrollReveal().reveal(".intro-txt", { origin: "left" });
+  // ScrollReveal().reveal(".skills-txt", { origin: "right" });
+  // ScrollReveal().reveal(".left", { origin: "left" });
+  // ScrollReveal().reveal(".right", { origin: "right" });
+  // ScrollReveal().reveal("#face", { origin: "right" });
+  // ScrollReveal().reveal(".passGenerator", { origin: "right" });
+  // ScrollReveal().reveal(".intro-pass", { origin: "left" });
+}
+animated();
 
 //NOTIFICACION
 
@@ -420,7 +430,7 @@ function CloseNotifi() {
 }
 
 //Funcion para cerrar notificacion
-const boxNotifi = document.getElementById("box-notifi");
-document.getElementById("close-notifi").addEventListener("click", () => {
-  CloseNotifi();
-});
+// const boxNotifi = document.getElementById("box-notifi");
+// document.getElementById("close-notifi").addEventListener("click", () => {
+//   CloseNotifi();
+// });
