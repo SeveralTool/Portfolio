@@ -22,4 +22,4 @@ Sitio web para incluir todos mis proyectos y contribuciones a el desarrollo de s
 
 ## Autor
 - Nahuel Galeano
-- [Sitio Webl](severaltool.vercel.app)
+- [Sitio Web](https://severaltool.vercel.app)
