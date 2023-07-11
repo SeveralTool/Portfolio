@@ -581,7 +581,7 @@ canvas {
 }
 
 .slick-slide {
-  object-fit: contain !important;
+  object-fit: cover !important;
   min-height: 300px !important;
 }
 
