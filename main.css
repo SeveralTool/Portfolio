@@ -973,6 +973,7 @@ i {
   margin: auto;
 }
 
+
 /* TEXTOS */
 p,
 span,
@@ -1023,6 +1024,7 @@ h2 {
 
   .grid-box {
     width: 100% !important;
+    column-gap: 5px;
   }
 
   .skills-box {
@@ -1034,8 +1036,8 @@ h2 {
   }
 
   .d {
-    width: 100%;
-    min-height: 300px;
+    width: 99%;
+    min-height: 450px;
     height: max-content;
     padding: 0;
     margin: 0;
@@ -1043,7 +1045,7 @@ h2 {
 
   .d-mobile {
     width: 100%;
-    min-height: 300px;
+    min-height: 350px;
     height: max-content;
     padding: 0;
     margin: 0;
@@ -1066,7 +1068,7 @@ h2 {
     font-size: 0.8rem;
   }
   .proyects-box {
-    width: 70%;
+    width: 60%;
   }
   .grid-box {
     grid-template-columns: 1fr;
