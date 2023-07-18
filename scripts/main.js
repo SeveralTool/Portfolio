@@ -1,22 +1,13 @@
-window.onload = () => {
-  if (document.images) {
-  }
+document.addEventListener("DOMContentLoaded", () => {
   const load = document.getElementById("load-window");
   load.style.transition = "all 0.5s";
   load.style.transform = "translateY(-101%)";
+
   setTimeout(() => {
     //Quitar carga de web
     load.style.display = "none";
-  }, 300);
-
-  // setTimeout(() => {
-  //   boxNotifi.style.display = "grid";
-  //   boxNotifi.style.transform = "translateX(-50%)";
-  //   setTimeout(() => {
-  //     CloseNotifi();
-  //   }, 10000);
-  // }, 10000);
-};
+  }, 100);
+});
 
 // elegir idioma
 let BtnES = document.getElementById("es");
@@ -24,27 +15,42 @@ let BtnEN = document.getElementById("en");
 let txtEsp = document.querySelectorAll(".esp");
 let txtEng = document.querySelectorAll(".eng");
 
+const toggleIdioma = (idioma) => {
+  if (idioma === "es") {
+    BtnES.style.backgroundColor = "rgb(27, 120, 226)";
+    BtnEN.style.backgroundColor = "#f000";
+    txtEng.forEach((txtEn) => {
+      txtEn.style.display = "none";
+    });
+    txtEsp.forEach((txtEs) => {
+      txtEs.style.display = "block";
+    });
+  } else {
+    BtnES.style.backgroundColor = "#f000";
+    BtnEN.style.backgroundColor = "rgb(27, 120, 226)";
+    txtEsp.forEach((txtEs) => {
+      txtEs.style.display = "none";
+    });
+    txtEng.forEach((txtEn) => {
+      txtEn.style.display = "block";
+    });
+  }
+};
+
 BtnES.addEventListener("click", () => {
-  BtnES.style.backgroundColor = "rgb(27, 120, 226)";
-  BtnEN.style.backgroundColor = "#f000";
-  txtEng.forEach((txtEn) => {
-    txtEn.style.display = "none";
-  });
-  txtEsp.forEach((txtEs) => {
-    txtEs.style.display = "block";
-  });
+  localStorage.setItem("idioma", "es");
+  toggleIdioma("es");
 });
 
 BtnEN.addEventListener("click", () => {
-  BtnES.style.backgroundColor = "#f000";
-  BtnEN.style.backgroundColor = "rgb(27, 120, 226)";
-  txtEsp.forEach((txtEs) => {
-    txtEs.style.display = "none";
-  });
-  txtEng.forEach((txtEn) => {
-    txtEn.style.display = "block";
-  });
+  localStorage.setItem("idioma", "en");
+  toggleIdioma("en");
 });
+
+const idiomaCache = localStorage.getItem("idioma");
+if (idiomaCache) {
+  toggleIdioma(idiomaCache);
+}
 
 // Ruta de navegacion dinamica
 //HR`S
@@ -65,10 +71,8 @@ const nivel1 = document.getElementById("html").offsetTop;
 const nivel2 = document.getElementById("intro-box").offsetTop;
 const nivel3 = document.getElementById("nivel3").offsetTop;
 const nivel4 = document.getElementById("nivel4").offsetTop;
-const nivel5 = document.getElementById("nivel5").offsetTop-5000;
-const nivel6 = document.getElementById("nivel6").offsetTop-5000;
-
-
+const nivel5 = document.getElementById("nivel5").offsetTop - 5000;
+const nivel6 = document.getElementById("nivel6").offsetTop - 5000;
 
 // console.log(nivel1,nivel2,nivel3,nivel4,nivel5,nivel6)
 
@@ -102,13 +106,6 @@ function pintarHr(hrs) {
 function detectarNivelActivo() {
   const scrollPos = window.scrollY; // Obtener posición de scroll
   // Comparar posición de scroll con los niveles de offset
-  console.log("Pos actual: "+ scrollPos);
-  console.log("Nivel1: "+ nivel1);
-  console.log("Nivel2: "+ nivel2);
-  console.log("Nivel3: "+ nivel3);
-  console.log("Nivel4: "+ nivel4);
-  console.log("Nivel5: "+ nivel5);
-  console.log("Nivel6: "+ nivel6);
   if (scrollPos >= nivel1 && scrollPos < nivel2) {
     pintarIcono(icon1);
     pintarHr(hr1);
@@ -190,58 +187,6 @@ $(document).ready(function () {
 });
 
 ///////////////////////////////////////
-
-// DYNAMIC PROYECT PICS VIEWER
-// const BtnShowPic = document.querySelectorAll(".pic-proyect");
-// const BtnClosePic = document.querySelectorAll(".close2");
-
-// BtnShowPic.forEach(function (element) {
-//   element.addEventListener("click", function () {
-//     var that = $(this).parent();
-//     var ocultar = that.find("div")[0];
-//     var BtnCerrar = that.find("i")[1];
-//     var BtnShow = that.find("i")[0];
-//     var imgs = that.find(".img-tec");
-//     // console.log(imgs)
-//     for (let i = 0; i < imgs.length; i++) {
-//       const img = imgs[i];
-//       img.style.display = "none";
-//     }
-//     ocultar.style.display = "none";
-//     BtnShow.style.display = "none";
-//     var Load = $(this).parent().find("span")[0];
-//     Load.style.display = "flex";
-//     // console.log(Load)
-//     setTimeout(() => {
-//       Load.style.display = "none";
-//       BtnCerrar.style.display = "block";
-//       var mostrar = that.find("div")[1];
-//       mostrar.style.display = "block";
-//     }, 2000);
-//   });
-// });
-
-// BtnClosePic.forEach(function (element) {
-//   element.addEventListener("click", function () {
-//     var that = $(this).parent();
-//     var ocultar = that.find("div")[1];
-//     var mostrar = that.find("div")[0];
-//     var BtnShow = that.find("i")[1];
-//     var BtnCerrar = that.find("i")[0];
-//     var imgs = that.find(".img-tec");
-//     for (let i = 0; i < imgs.length; i++) {
-//       const img = imgs[i];
-//       img.style.display = "block";
-//     }
-//     ocultar.style.display = "none";
-//     mostrar.style.display = "block";
-//     BtnShow.style.display = "none";
-//     BtnCerrar.style.display = "block";
-//   });
-// });
-
-///////////////////////////////////////
-
 // PASS GENERATOR IN JS (NOT PYTHON)
 var input = document.getElementById("input-pass");
 const generate = document.getElementById("generate");
@@ -328,8 +273,6 @@ btnCopy.addEventListener("click", () => {
     navigator.clipboard
       .writeText(contenido)
       .then(() => {
-        //   console.log(contenido)
-        //   console.log('Texto copiado al portapapeles');
       })
       .catch((error) => {
         console.error(
@@ -393,44 +336,3 @@ links.forEach((link) => {
     requestAnimationFrame(animation);
   });
 });
-
-//ScrollReveal.js
-function animated() {
-  ScrollReveal({
-    delay: 100,
-    reset: true,
-    duration: 500,
-    distance: "200px",
-    easing: "ease-in-out",
-    reset: false,
-  });
-
-  // ScrollReveal().reveal(".intro-txt", { origin: "left" });
-  // ScrollReveal().reveal(".skills-txt", { origin: "right" });
-  // ScrollReveal().reveal(".left", { origin: "left" });
-  // ScrollReveal().reveal(".right", { origin: "right" });
-  // ScrollReveal().reveal("#face", { origin: "right" });
-  // ScrollReveal().reveal(".passGenerator", { origin: "right" });
-  // ScrollReveal().reveal(".intro-pass", { origin: "left" });
-}
-animated();
-
-//NOTIFICACION
-
-function CloseNotifi() {
-  boxNotifi.style.transition = "all 0.3s";
-  boxNotifi.style.transform = "translate(-50%,10px)";
-  setTimeout(() => {
-    boxNotifi.style.transition = "all 1s";
-    boxNotifi.style.transform = "translate(-50%,-200px)";
-  }, 300);
-  setTimeout(() => {
-    boxNotifi.style.display = "none";
-  }, 800);
-}
-
-//Funcion para cerrar notificacion
-// const boxNotifi = document.getElementById("box-notifi");
-// document.getElementById("close-notifi").addEventListener("click", () => {
-//   CloseNotifi();
-// });
