@@ -38,21 +38,12 @@ function setCanvas() {
 }
 setCanvas();
 
-// function setTagCloudRadius(newRadius) {
-//   // Llama a la función setRadius en el objeto TagCloud con el nuevo valor de radio
-//   tagCloud.setRadius(newRadius);
-// }
-
 // Luego puedes llamar a la función setTagCloudRadius con el nuevo radio que desees
 window.addEventListener("resize", () => {
   var element = document.getElementById("canvas");
   element.innerText = "";
   setCanvas();
   addImgs();
-  // document.getElementById("html0").style.width = "100%";
-  // document.getElementById("html0").style.height = "100%";
-  // document.getElementById("html").style.width = "100%";
-  // document.getElementById("html").style.height = "100%";
 });
 
 //Crear elemento donde van las imgs
@@ -171,17 +162,30 @@ function updateEdgesPosition() {
   edgesVar.scale.copy(scale);
 }
 
-// //Funcion para auto reajustarse
-// function onWindowResize() {
-//     const width = window.innerWidth;
-//     const height = window.innerHeight;
-//     renderer.setSize(parentElement.offsetWidth, parentElement.offsetHeight);
-//     camera.updateProjectionMatrix();
-// }
-//   window.addEventListener('resize', onWindowResize);
-//     camera.position.set(0,4,0);
-//     camera.zoom = 3
-//     camera.updateProjectionMatrix()
+// Función para actualizar Three.js
+function updateThree() {
+  // Actualiza el tamaño del renderizador
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+  renderer.setSize(width, height);
+
+  // Actualiza la relación de aspecto de la cámara
+  camera.aspect = width / height;
+  camera.updateProjectionMatrix();
+
+  // Renderiza la escena nuevamente
+  renderer.render(scene, camera);
+}
+
+// Controlador de evento "resize"
+window.addEventListener("resize", () => {
+  let width = window.innerWidth;
+  if (width % 10 === 0 ) { // Verifica si el ancho es múltiplo de 300
+    console.log("Ancho es múltiplo de 300:", width);
+    updateThree(); // Llama a la función para actualizar Three.js
+  }
+});
+
 
 //Animacion de rotacion de la figura
 const animate3 = function () {
