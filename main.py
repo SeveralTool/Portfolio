@@ -13,7 +13,7 @@ def passGenerator():
     password = "".join(random.sample(combinacion, length)) # Usamos random y conmbinamos aleatoriamente con el tamaño max
     # print(password) # Imprimimos la password
 
-    ~~print(json.dumps({"password": password}))~~
+    `print(json.dumps({"password": password}))`
 
 
 passGenerator()
