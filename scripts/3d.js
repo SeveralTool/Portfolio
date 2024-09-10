@@ -17,9 +17,6 @@ function setCanvas() {
     "",
     "",
     "",
-    "",
-    "",
-    "",
   ];
   var width = document.getElementById("canvas").offsetWidth;
   // console.log(width);
@@ -53,19 +50,17 @@ function addImgs() {
 
   //Crear el array con las rutas de las imgs
   const imagenes = [
-    "./Img`s/icons/charts.png",
     "./Img`s/icons/css-3.png",
     "./Img`s/icons/Django-Logo.png",
     "./Img`s/icons/docker.png",
     "./Img`s/icons/fast.png",
     "./Img`s/icons/git.png",
-    "./Img`s/icons/html-5.png",
-    "./Img`s/icons/jquery.png",
     "./Img`s/icons/js.png",
+    "./Img`s/icons/ts.png",
+    "./Img`s/icons/firebase.png",
+    "./Img`s/icons/htmx.png",
     "./Img`s/icons/linux.png",
-    "./Img`s/icons/mongo.png",
     "./Img`s/icons/mysql.png",
-    "./Img`s/icons/php.png",
     "./Img`s/icons/physics.png",
     "./Img`s/icons/piton.png",
     "./Img`s/icons/Three.js.png",
