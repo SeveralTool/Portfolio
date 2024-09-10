@@ -379,8 +379,10 @@ body {
 
 .span-leng {
   font-size: 1.5rem;
-  padding: 15px;
+  padding: 5px 10px;
   cursor: pointer;
+  border-radius: 5px;
+  margin:1px
 }
 
 .span-leng:hover {
@@ -827,7 +829,7 @@ i {
 .arrow-cv {
   font-size: 2rem;
   color: rgb(10, 255, 10);
-  margin-bottom: 6vw;
+  margin-bottom: 3vw;
   cursor: default;
 }
 
@@ -850,6 +852,7 @@ i {
 .download-icon {
   padding-left: 5px;
   color: rgb(27, 120, 226);
+  /* font-size: 1.5rem; */
 }
 
 .cv-download a:hover {
