@@ -1,61 +1,35 @@
-# 🌐 Portafolio Personal
+# Portafolio — v2
 
-Bienvenido a mi portafolio web, un sitio diseñado para mostrar mis proyectos, habilidades y experiencia en desarrollo de software.  
-Este repositorio contiene el código fuente del sitio y todas las características visuales e interactivas que lo acompañan.
+Sitio personal de Nahuel Galeano. Esta rama (`v2`) reemplaza el HTML, CSS y JavaScript sueltos por **Astro 7**. El contenido sigue siendo estático. React solo hidrata el fondo Three.js.
 
----
+La versión anterior queda en `main`.
 
-## 🚀 Descripción
+## Requisitos
 
-Este sitio web funciona como una centralización de todo mi trabajo como desarrollador. Incluye mi stack tecnológico, proyectos destacados, herramientas interactivas y mi perfil profesional.  
-Su objetivo es ofrecer una presentación clara y moderna de mi crecimiento y contribuciones en el mundo del software.
+- Node.js `>= 22.23.4` (lo pide Astro 7)
+- npm 9 o superior
 
----
+## Scripts
 
-## ✨ Características Principales
+```bash
+npm install
+npm run dev      # http://localhost:4321
+npm run build    # salida estática en dist/
+npm run preview  # sirve dist/
+```
 
-- **Presentación / Hero Section**  
-  Información personal, enfoque profesional y acceso rápido a mis redes o contacto.
+## Despliegue
 
-- **Habilidades / Tech Stack**  
-  Representación visual de las tecnologías que utilizo, con animaciones y componentes interactivos.
+El build es estático (`dist/`). En Vercel el preset de Astro publica esa carpeta sin adapter. El sitio de producción sigue siendo [https://severaltool.vercel.app](https://severaltool.vercel.app); hay que apuntar el proyecto a la rama `v2` cuando se quiera reemplazar el deploy de `main`.
 
-- **Proyectos Destacados**  
-  Lista dinámica de mis proyectos, con descripciones, tecnologías utilizadas y enlaces a repositorios o demos.
+## Qué cambió
 
-- **Generador de Contraseñas**  
-  Herramienta integrada para generar contraseñas seguras totalmente desarrollada por mí.
+- Header, textos, proyectos, CV y footer son componentes `.astro`. No envían JavaScript.
+- El icosaedro vive en `src/components/SceneBackground.tsx` y se monta con `client:only="react"`, así Three.js no corre en el build.
+- El pixel ratio del canvas queda en `min(devicePixelRatio, 2)`. Al desmontar se liberan geometrías, materiales y el contexto WebGL.
+- La nube de habilidades sigue siendo TagCloud. Los carruseles ya no usan jQuery ni Slick. El idioma, la navegación y el generador son scripts chicos.
+- `scripts/three-module.js` (1,4 MB) salió del sitio. El detalle de la decisión está en `RESEARCH.md` y la medición en `docs/performance.md`.
 
-- **Descarga de CV**  
-  Acceso directo a mi currículum actualizado.
+## Notas
 
----
-
-## 🛠️ Tecnologías Utilizadas
-
-- **JavaScript (ES6+)**
-- **Three.js** – Gráficos 3D y animaciones avanzadas
-- **TagCloud.js** – Efecto dinámico para habilidades
-- **CSS3**
-- **HTML5**
-- **ScrollReveal.js** – Animaciones al hacer scroll
-- **Python** – Utilizado para herramientas auxiliares y procesos específicos
-
----
-
-## 🌍 Deploy
-
-El sitio está desplegado en Vercel:
-
-🔗 **https://severaltool.vercel.app**
-
----
-
-## 👤 Autor
-
-**Nahuel Galeano**  
-Desarrollador de software especializado en aplicaciones móviles, backend y herramientas interactivas.
-
-- 🔗 Sitio Web: https://severaltool.vercel.app
-
----
+Las fuentes Khand de `Fonts/` y los scripts `main.py` / `scripts/main.py` no los usa la página. El generador del sitio está en `src/scripts/password.ts`.
