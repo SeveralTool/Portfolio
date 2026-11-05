@@ -1,0 +1,17 @@
+---
+import ProjectCard from "./ProjectCard.astro";
+import { projects } from "../data/projects";
+---
+
+<section class="proyects-box" id="projects" aria-labelledby="h2-projects-es">
+  <h2 id="h2-projects-es" class="esp h">PROYECTOS</h2>
+  <h2 id="h2-projects-en" class="eng h">PROJECTS</h2>
+  <div class="grid-box">
+    {projects.map((project) => <ProjectCard project={project} />)}
+  </div>
+</section>
+
+<script>
+  import { initCarousels } from "../scripts/carousel";
+  initCarousels();
+</script>

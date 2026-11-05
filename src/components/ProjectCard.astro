@@ -1,0 +1,55 @@
+---
+import type { Project } from "../data/projects";
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+const layout = project.variant === "mobile" ? "d-mobile" : "d";
+---
+
+<article class:list={[layout, project.slug, project.align]}>
+  <div class="carruseles carousel" data-carousel>
+    {
+      project.images.map((image, index) => (
+        <img
+          class:list={{ "is-active": index === 0 }}
+          src={image.src}
+          alt={image.alt}
+          loading={index === 0 ? "eager" : "lazy"}
+        />
+      ))
+    }
+  </div>
+  <div class="description">
+    <h3 class="title-proyect">{project.title}</h3>
+    <p class="desc-es esp">{project.es}</p>
+    <p class="desc-es eng">{project.en}</p>
+    {
+      project.href ? (
+        <a
+          href={project.href}
+          class:list={["link-code", { "link-code-mobile": project.variant === "mobile" }]}
+          title="GitHub"
+        >
+          <i class="fas fa-code" aria-hidden="true" /> SOURCE
+        </a>
+      ) : (
+        <span
+          class:list={[
+            "link-code",
+            "disabledSource",
+            { "link-code-mobile": project.variant === "mobile" },
+          ]}
+          aria-disabled="true"
+        >
+          <i class="fas fa-code" aria-hidden="true" /> SOURCE
+        </span>
+      )
+    }
+    <div class="seccion-tec">
+      {project.tech.map((item) => <img src={item.src} alt={item.alt} class="img-tec" />)}
+    </div>
+  </div>
+</article>
