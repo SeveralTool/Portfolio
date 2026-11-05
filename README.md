@@ -1,11 +1,21 @@
 # Nahuel Galeano — portfolio
 
-Personal site for Nahuel Galeano. The `v2` branch replaces the vanilla HTML, CSS, and JavaScript site with **Astro 7**. Page content is static HTML. React hydrates only the Three.js background.
+Static personal site. Astro renders the page as HTML. React hydrates only the Three.js background.
+
+## Requirements
+
+- Node.js `>= 22.23.4`
+- npm 9 or newer
+
+## Scripts
+
+```bash
+npm install
+npm run dev       # http://localhost:4321
+npm run build     # static output in dist/
+npm run preview   # serves dist/
+```
 
 ## Deploy
 
-The build is static (`dist/`). On Vercel, the Astro preset publishes that folder with no adapter. Production is [https://severaltool.vercel.app](https://severaltool.vercel.app).
-
-## Sections
-
-In-page URLs are `#top`, `#about`, `#skills`, `#work`, and `#resume`. The page is English only.
+`npm run build` writes `dist/`. Vercel publishes that folder with the Astro preset and no adapter. Production: [https://severaltool.vercel.app](https://severaltool.vercel.app).
