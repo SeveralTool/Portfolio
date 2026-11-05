@@ -1,26 +1,23 @@
-<nav id="nav-box" aria-label="Secciones">
-  <a href="#nivel1" aria-label="Inicio" aria-current="true">
-    <i class="fa-brands fa-redhat icon-nav is-active" id="icon-nav-1" aria-hidden="true"></i>
+---
+import Icon from "./Icon.astro";
+---
+
+<nav class="rail" aria-label="Sections">
+  <span class="rail-marker" id="rail-marker" aria-hidden="true"></span>
+  <a href="#top" aria-label="Home" aria-current="true">
+    <Icon name="home" id="icon-nav-1" class="rail-icon is-active" />
   </a>
-  <hr class="hr-nav is-active" id="hr1" />
-  <a href="#intro-box" aria-label="Presentación">
-    <i class="fas fa-user icon-nav" id="icon-nav-2" aria-hidden="true"></i>
+  <span class="rail-line is-active" id="hr1"></span>
+  <a href="#about" aria-label="About">
+    <Icon name="user" id="icon-nav-2" class="rail-icon" />
   </a>
-  <hr class="hr-nav" id="hr2" />
-  <a href="#nivel3" aria-label="Habilidades">
-    <i class="fas fa-laptop-code icon-nav" id="icon-nav-3" aria-hidden="true"></i>
+  <span class="rail-line" id="hr2"></span>
+  <a href="#skills" aria-label="Stack">
+    <Icon name="stack" id="icon-nav-3" class="rail-icon" />
   </a>
-  <hr class="hr-nav" id="hr3" />
-  <a href="#nivel4" aria-label="Proyectos">
-    <i class="fas fa-project-diagram icon-nav" id="icon-nav-4" aria-hidden="true"></i>
-  </a>
-  <hr class="hr-nav" id="hr4" />
-  <a href="#nivel5" aria-label="Generador de contraseñas">
-    <i class="fas fa-key icon-nav" id="icon-nav-5" aria-hidden="true"></i>
-  </a>
-  <hr class="hr-nav" id="hr5" />
-  <a href="#nivel6" aria-label="Currículum">
-    <i class="fas fa-file-pdf icon-nav" id="icon-nav-6" aria-hidden="true"></i>
+  <span class="rail-line" id="hr3"></span>
+  <a href="#work" aria-label="Work">
+    <Icon name="work" id="icon-nav-4" class="rail-icon" />
   </a>
 </nav>
 

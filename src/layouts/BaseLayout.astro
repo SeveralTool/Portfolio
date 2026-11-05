@@ -7,54 +7,42 @@ interface Props {
 }
 
 const {
-  title = "Portfolio SeveralTool",
-  description = "Portfolio by SeveralTool",
+  title = "Nahuel Galeano — Software Developer",
+  description = "Portfolio of Nahuel Galeano, a software developer focused on mobile apps and web products.",
 } = Astro.props;
 
 const site = Astro.site ?? "https://severaltool.vercel.app";
 const image = new URL("/images/top-suit.png", site).href;
-const pageUrl = new URL(Astro.url.pathname, site).href;
+const pageUrl = new URL("/", site).href;
 ---
 
 <!doctype html>
-<html lang="es" id="html0">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#000000" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <link rel="icon" type="image/png" href="/images/top-suit.png" />
     <link rel="apple-touch-icon" href="/images/top-suit.png" />
-    <meta property="og:title" content="SeveralTool" />
-    <meta property="og:description" content="Portfolio dinamico de SeveralTool" />
+    <link rel="canonical" href={pageUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
     <meta property="og:image" content={image} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={pageUrl} />
+    <meta property="og:locale" content="en_US" />
     <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Braah+One&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    />
-    <script is:inline>
-      try {
-        var lang = localStorage.getItem("idioma");
-        if (lang === "en" || lang === "es") {
-          document.documentElement.dataset.lang = lang;
-          document.documentElement.lang = lang;
-        }
-      } catch (e) {}
-    </script>
   </head>
-  <body id="html">
-    <a class="skip-link" href="#content">Saltar al contenido</a>
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
     <slot />
   </body>
 </html>

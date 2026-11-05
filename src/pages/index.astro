@@ -3,11 +3,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import SceneBackground from "../components/SceneBackground.tsx";
 import Hero from "../components/Hero.astro";
 import Intro from "../components/Intro.astro";
-import SectionDivider from "../components/SectionDivider.astro";
 import Skills from "../components/Skills.astro";
 import Projects from "../components/Projects.astro";
-import PasswordGenerator from "../components/PasswordGenerator.astro";
-import CvDownload from "../components/CvDownload.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import SideNav from "../components/SideNav.astro";
 ---
@@ -16,18 +13,14 @@ import SideNav from "../components/SideNav.astro";
   <SceneBackground client:only="react">
     <div slot="fallback" id="back3d" aria-hidden="true"></div>
   </SceneBackground>
-  <Hero />
-  <main id="content">
-    <Intro />
-    <SectionDivider id="nivel3" />
-    <Skills />
-    <SectionDivider id="nivel4" />
-    <Projects />
-    <SectionDivider id="nivel5" />
-    <PasswordGenerator />
-    <SectionDivider id="nivel6" />
-    <CvDownload />
-  </main>
-  <SiteFooter />
+  <div class="page">
+    <Hero />
+    <main id="content">
+      <Intro />
+      <Skills />
+      <Projects />
+    </main>
+    <SiteFooter />
+  </div>
   <SideNav />
 </BaseLayout>

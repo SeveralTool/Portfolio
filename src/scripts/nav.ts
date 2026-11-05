@@ -1,15 +1,28 @@
 const levels = [
-  { section: "nivel1", icon: "icon-nav-1", rule: "hr1" },
-  { section: "intro-box", icon: "icon-nav-2", rule: "hr2" },
-  { section: "skills", icon: "icon-nav-3", rule: "hr3" },
-  { section: "projects", icon: "icon-nav-4", rule: "hr4" },
-  { section: "security", icon: "icon-nav-5", rule: "hr5" },
-  { section: "cv", icon: "icon-nav-6", rule: "hr5" },
+  { section: "top", icon: "icon-nav-1" },
+  { section: "about", icon: "icon-nav-2" },
+  { section: "skills", icon: "icon-nav-3" },
+  { section: "work", icon: "icon-nav-4" },
 ];
 
+const lines = ["hr1", "hr2", "hr3"];
+
+function placeMarker(iconId: string) {
+  const marker = document.getElementById("rail-marker");
+  const icon = document.getElementById(iconId);
+  const rail = icon?.closest(".rail");
+  if (!marker || !icon || !rail) return;
+
+  const railBox = rail.getBoundingClientRect();
+  const iconBox = icon.getBoundingClientRect();
+  const y = iconBox.top - railBox.top + iconBox.height / 2 - marker.offsetHeight / 2;
+  marker.style.transform = `translateY(${y}px)`;
+}
+
 function activate(sectionId: string) {
-  const current = levels.find((level) => level.section === sectionId);
-  if (!current) return;
+  const index = levels.findIndex((level) => level.section === sectionId);
+  if (index < 0) return;
+  const current = levels[index];
 
   for (const level of levels) {
     const icon = document.getElementById(level.icon);
@@ -21,9 +34,11 @@ function activate(sectionId: string) {
     else link.removeAttribute("aria-current");
   }
 
-  for (const id of ["hr1", "hr2", "hr3", "hr4", "hr5"]) {
-    document.getElementById(id)?.classList.toggle("is-active", id === current.rule);
-  }
+  lines.forEach((id, lineIndex) => {
+    document.getElementById(id)?.classList.toggle("is-active", lineIndex < index);
+  });
+
+  placeMarker(current.icon);
 }
 
 export function initNav() {
@@ -33,15 +48,27 @@ export function initNav() {
 
   if (sections.length === 0) return;
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      const visible = entries
-        .filter((entry) => entry.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-      if (visible?.target.id) activate(visible.target.id);
-    },
-    { rootMargin: "-20% 0px -55% 0px", threshold: [0.1, 0.25, 0.5] },
-  );
+  let frame = 0;
 
-  for (const section of sections) observer.observe(section);
+  const update = () => {
+    frame = 0;
+    const marker = window.innerHeight * 0.42;
+    let active = sections[0].id;
+    for (const section of sections) {
+      if (section.getBoundingClientRect().top <= marker) active = section.id;
+    }
+    const atBottom =
+      window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 8;
+    if (atBottom) active = sections[sections.length - 1].id;
+    activate(active);
+  };
+
+  const onScroll = () => {
+    if (frame) return;
+    frame = window.requestAnimationFrame(update);
+  };
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
+  update();
 }
