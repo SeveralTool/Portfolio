@@ -3,10 +3,10 @@ import ProjectCard from "./ProjectCard.astro";
 import { projects } from "../data/projects";
 ---
 
-<section class="proyects-box" id="projects" aria-labelledby="h2-projects-es">
-  <h2 id="h2-projects-es" class="esp h">PROYECTOS</h2>
-  <h2 id="h2-projects-en" class="eng h">PROJECTS</h2>
-  <div class="grid-box">
+<section class="section" id="work" aria-labelledby="work-heading">
+  <p class="kicker">03 — Work</p>
+  <h2 id="work-heading">Selected work</h2>
+  <div class="work-grid">
     {projects.map((project) => <ProjectCard project={project} />)}
   </div>
 </section>

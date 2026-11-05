@@ -6,11 +6,10 @@ interface Props {
 }
 
 const { project } = Astro.props;
-const layout = project.variant === "mobile" ? "d-mobile" : "d";
 ---
 
-<article class:list={[layout, project.slug, project.align]}>
-  <div class="carruseles carousel" data-carousel>
+<article class="project">
+  <div class="carousel" data-carousel>
     {
       project.images.map((image, index) => (
         <img
@@ -22,34 +21,22 @@ const layout = project.variant === "mobile" ? "d-mobile" : "d";
       ))
     }
   </div>
-  <div class="description">
-    <h3 class="title-proyect">{project.title}</h3>
-    <p class="desc-es esp">{project.es}</p>
-    <p class="desc-es eng">{project.en}</p>
-    {
-      project.href ? (
-        <a
-          href={project.href}
-          class:list={["link-code", { "link-code-mobile": project.variant === "mobile" }]}
-          title="GitHub"
-        >
-          <i class="fas fa-code" aria-hidden="true" /> SOURCE
-        </a>
-      ) : (
-        <span
-          class:list={[
-            "link-code",
-            "disabledSource",
-            { "link-code-mobile": project.variant === "mobile" },
-          ]}
-          aria-disabled="true"
-        >
-          <i class="fas fa-code" aria-hidden="true" /> SOURCE
-        </span>
-      )
-    }
-    <div class="seccion-tec">
-      {project.tech.map((item) => <img src={item.src} alt={item.alt} class="img-tec" />)}
+  <div class="project-body">
+    <h3>{project.title}</h3>
+    <p>{project.summary}</p>
+    <div class="project-meta">
+      <ul class="tech">
+        {project.tech.map((item) => <li><img src={item.src} alt={item.alt} /></li>)}
+      </ul>
+      {
+        project.href ? (
+          <a class="source" href={project.href} rel="noreferrer">
+            Source
+          </a>
+        ) : (
+          <span class="source source-disabled">Private</span>
+        )
+      }
     </div>
   </div>
 </article>

@@ -1,6 +1,4 @@
 export function initCarousels() {
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
   document.querySelectorAll<HTMLElement>("[data-carousel]:not([data-ready])").forEach((root) => {
     const images = [...root.querySelectorAll("img")];
     if (images.length < 2) return;
