@@ -1,8 +1,11 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
+import { LineMaterial } from "three/addons/lines/LineMaterial.js";
+import { LineSegments2 } from "three/addons/lines/LineSegments2.js";
+import { LineSegmentsGeometry } from "three/addons/lines/LineSegmentsGeometry.js";
 
 const MAX_PIXEL_RATIO = 2;
-const ROTATION_STEP = 0.0002;
+const LINE_WIDTH = 0.4;
 
 export default function SceneBackground() {
   const mountRef = useRef<HTMLDivElement>(null);
@@ -12,128 +15,113 @@ export default function SceneBackground() {
     if (!mount) return;
 
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(
-      75,
-      window.innerWidth / Math.max(window.innerHeight, 1),
-      0.1,
-      1000,
-    );
-    camera.position.set(7, 0, 5);
+    const camera = new THREE.PerspectiveCamera(46, 1, 0.1, 100);
+    camera.position.set(0, 0, 7.4);
 
     const renderer = new THREE.WebGLRenderer({
       alpha: true,
       antialias: true,
       powerPreference: "high-performance",
     });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, MAX_PIXEL_RATIO));
-    renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setClearColor(0x000000, 0);
     renderer.domElement.setAttribute("aria-hidden", "true");
     mount.appendChild(renderer.domElement);
 
-    const geometry = new THREE.IcosahedronGeometry(7, 5);
-    const material = new THREE.MeshBasicMaterial({
-      color: "#000000",
-      side: THREE.DoubleSide,
-      transparent: true,
-      opacity: 0,
-    });
-    const shape = new THREE.Mesh(geometry, material);
-    scene.add(shape);
+    const group = new THREE.Group();
+    scene.add(group);
 
-    const positionAttr = geometry.getAttribute("position");
-    const vertices: THREE.Vector3[] = [];
-    for (let index = 0; index < positionAttr.count; index += 1) {
-      vertices.push(
-        new THREE.Vector3(
-          positionAttr.getX(index),
-          positionAttr.getY(index),
-          positionAttr.getZ(index),
-        ),
-      );
+    const radius = 3.15;
+    const geometry = new THREE.IcosahedronGeometry(radius, 2);
+    const edges = new THREE.EdgesGeometry(geometry);
+    const source = edges.getAttribute("position");
+    const doubled = new Float32Array(source.count * 6);
+    const start = new THREE.Vector3();
+    const end = new THREE.Vector3();
+    const mid = new THREE.Vector3();
+    let write = 0;
+    for (let index = 0; index < source.count; index += 2) {
+      start.set(source.getX(index), source.getY(index), source.getZ(index));
+      end.set(source.getX(index + 1), source.getY(index + 1), source.getZ(index + 1));
+      mid.copy(start).add(end).multiplyScalar(0.5).normalize().multiplyScalar(radius);
+      doubled.set([start.x, start.y, start.z, mid.x, mid.y, mid.z], write);
+      write += 6;
+      doubled.set([mid.x, mid.y, mid.z, end.x, end.y, end.z], write);
+      write += 6;
     }
+    const lineGeometry = new LineSegmentsGeometry();
+    lineGeometry.setPositions(doubled);
+    const wireMaterial = new LineMaterial({
+      color: 0x9ec4ff,
+      linewidth: LINE_WIDTH,
+      transparent: true,
+      opacity: 1,
+      worldUnits: false,
+    });
+    const wire = new LineSegments2(lineGeometry, wireMaterial);
+    group.add(wire);
 
-    const pointsGeometry = new THREE.BufferGeometry().setFromPoints(vertices);
+    const unique = new Map<string, THREE.Vector3>();
+    for (let index = 0; index < doubled.length; index += 3) {
+      const vertex = new THREE.Vector3(doubled[index], doubled[index + 1], doubled[index + 2]);
+      unique.set(`${vertex.x.toFixed(3)}|${vertex.y.toFixed(3)}|${vertex.z.toFixed(3)}`, vertex);
+    }
+    const pointsGeometry = new THREE.BufferGeometry().setFromPoints([...unique.values()]);
     const pointsMaterial = new THREE.PointsMaterial({
       color: "#ffffff",
-      size: 0.001,
+      size: 0.022,
       sizeAttenuation: true,
+      transparent: true,
+      opacity: 1,
     });
     const points = new THREE.Points(pointsGeometry, pointsMaterial);
-    scene.add(points);
+    group.add(points);
 
-    const edgesGeometry = new THREE.EdgesGeometry(geometry);
-    const edgesMaterial = new THREE.LineBasicMaterial({ color: "rgb(15, 15, 15)" });
-    const edges = new THREE.LineSegments(edgesGeometry, edgesMaterial);
-    scene.add(edges);
+    let last = performance.now();
 
-    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let frameId = 0;
-    let running = false;
-
-    const renderFrame = () => {
-      if (!running) return;
-      frameId = window.requestAnimationFrame(renderFrame);
-      shape.rotation.x += ROTATION_STEP;
-      shape.rotation.y += ROTATION_STEP;
-      shape.rotation.z += ROTATION_STEP;
-      points.position.copy(shape.position);
-      points.quaternion.copy(shape.quaternion);
-      points.scale.copy(shape.scale);
-      edges.position.copy(shape.position);
-      edges.quaternion.copy(shape.quaternion);
-      edges.scale.copy(shape.scale);
-      renderer.render(scene, camera);
-    };
-
-    const stop = () => {
-      running = false;
-      window.cancelAnimationFrame(frameId);
-    };
-
-    const start = () => {
-      if (running || motionQuery.matches || document.hidden) return;
-      running = true;
-      renderFrame();
-    };
-
-    const onResize = () => {
+    const resize = () => {
       const width = window.innerWidth;
       const height = Math.max(window.innerHeight, 1);
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
+      const compact = width < 800;
+      group.scale.setScalar(compact ? 2.05 : 2.7);
+      group.position.set(compact ? -5.6 : -8.5, -0.15, 0);
+      wireMaterial.resolution.set(width, height);
       renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, MAX_PIXEL_RATIO));
       renderer.setSize(width, height);
+    };
+
+    renderer.setAnimationLoop(() => {
+      const now = performance.now();
+      const delta = Math.min((now - last) / 1000, 0.05);
+      last = now;
+      group.rotation.y += delta * 0.1575;
+      group.rotation.x += delta * 0.042;
       renderer.render(scene, camera);
+    });
+
+    const fade = () => {
+      const progress = Math.min(window.scrollY / (window.innerHeight * 0.7), 1);
+      const opacity = 1 - progress * 0.84;
+      wireMaterial.opacity = opacity;
+      pointsMaterial.opacity = opacity;
     };
 
-    const onMotion = () => {
-      if (motionQuery.matches) stop();
-      else start();
-    };
-
-    const onVisibility = () => {
-      if (document.hidden) stop();
-      else start();
-    };
-
-    motionQuery.addEventListener("change", onMotion);
-    document.addEventListener("visibilitychange", onVisibility);
-    window.addEventListener("resize", onResize);
-    renderer.render(scene, camera);
-    start();
+    window.addEventListener("resize", resize);
+    window.addEventListener("scroll", fade, { passive: true });
+    resize();
+    fade();
 
     return () => {
-      stop();
-      motionQuery.removeEventListener("change", onMotion);
-      document.removeEventListener("visibilitychange", onVisibility);
-      window.removeEventListener("resize", onResize);
+      renderer.setAnimationLoop(null);
+      window.removeEventListener("resize", resize);
+      window.removeEventListener("scroll", fade);
       geometry.dispose();
-      material.dispose();
+      edges.dispose();
+      lineGeometry.dispose();
+      wireMaterial.dispose();
       pointsGeometry.dispose();
       pointsMaterial.dispose();
-      edgesGeometry.dispose();
-      edgesMaterial.dispose();
       renderer.dispose();
       renderer.forceContextLoss();
       renderer.domElement.remove();
